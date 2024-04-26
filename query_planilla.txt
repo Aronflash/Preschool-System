@@ -1,0 +1,13 @@
+CREATE VIEW v_planillaInscripcion AS
+(SELECT a.codigo_inscripcion, a.cedula_escolar AS cedula_inscripcion, b.cedula_escolar AS cedula_estudiante, b.apellidos AS apellidos_b, b.nombres AS nombres_b, b.fecha_nacimiento AS fna_b, b.edad AS edad_b, b.lugar_nacimiento AS lna_b, b.estado AS estado_b, r.cedula_representante AS cedula_r, r.nombres AS nombres_r, r.apellidos AS apellidos_r, r.telefono AS telefono_r, p.descripcion AS parentesco_r, b.cedula_mama, m.cedula_mama AS cedula_m, m.nombres AS nombres_m, m.apellidos AS apellidos_m, m.telefono AS telefono_m, m.codigo_estadocivil AS estadoCivil_m, m.edad AS edad_m, m.direccion_habitacion AS dh_m, m.telefono_habitacion AS th_m, m.direccion_trabajo AS dt_m, m.telefono_trabajo AS tt_m, m.codigo_nivelacademico AS nivelAcademico_m, m.ocupacion AS ocupacion_m, m.profesion AS profesion_m, m.correo AS correo_m, b.cedula_papa, pp.cedula_papa AS cedula_pp, pp.nombres AS nombres_pp, pp.apellidos AS apellidos_pp, pp.telefono AS telefono_pp, pp.codigo_estadocivil AS estadoCivil_pp, pp.edad AS edad_pp, pp.direccion_habitacion AS dh_pp, pp.telefono_habitacion AS th_pp, pp.direccion_trabajo AS dt_pp, pp.telefono_trabajo AS tt_pp, pp.codigo_nivelacademico AS nivelAcademico_pp, pp.ocupacion AS ocupacion_pp, pp.profesion AS profesion_pp, pp.correo AS correo_pp
+    FROM inscripcion a
+    JOIN estudiante b
+    ON a.cedula_escolar = b.cedula_escolar
+    JOIN representante_legal r
+    ON b.cedula_representante = r.cedula_representante
+    JOIN parentesco p
+    ON p.codigo_parentesco = r.codigo_parentesco
+    JOIN mama m
+    ON m.cedula_mama = b.cedula_mama
+    JOIN papa pp
+    ON pp.cedula_papa = b.cedula_papa);

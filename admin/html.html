@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+	<script>
+		 function completeForm() {
+          // Obtener los valores de los campos del estudiante
+          var cedulaEstudiante = "123411221";
+          var apellidosEstudiante = "nonin";
+          var nombresEstudiante = "pepe";
+          var fechaEstudiante = "01/03/2024";
+          var edadEstudiante = 18;
+          var lugarNacimiento = "San cristobla"
+          var estadoEstudiante = "Tachira"
+          var nacionalidadEstudiante = "Estrano"
+          var procedenciaEstudiante = "Otro lado"
+          var estadoHermano = "Si"
+          var cantidadHermano = 0;
+          var sexoHermano = "M"
+          var lugarHermano = "no"
+
+          // Obtener los valores de los campos de antecedentes prenatales
+          var enfermedad = "Sizarra"
+          var hospitalizado = 0;
+          var motivoHospitalizacion = ""
+          var presentaAlergia = 1;
+          var alergias = "Gluten";
+          var padeceCondicion = 1;
+          var condicion = "Autismo"
+          var informe = 0;
+          var limitacion = 0
+          var especialista = 1;
+          var doctor = "Dtr nunez"
+          var enfermarFacilidad = 1;
+
+          // Obtener los valores de los campos del representante legal
+          var cedulaRepresentante = "8105469"
+          var apellidosRepresentante = "onana"
+          var nombresRepresentante = "Alberto Jose"
+          var telefonoRepresentante = "1234321111122"
+          var codigoParentesco = "papa";
+
+          // Obtener los valores de los campos de la madre
+          var cedulaMama = "02030403"
+          var apellidosMama = "Arroz perez"
+          var nombresMama = "Ediliana"
+          var codigoCivilMama = "1"
+          var nacionalidadMama = "Venezolano"
+          var edadMama = 12
+          var direccionHMama = "NO ESPECIFICA"
+          var telefonoHMama = "NO ESPECIFICA"
+          var direccionTMama = "NO ESPECIFICA"
+          var telefonoTMama = "NO ESPECIFICA"
+          var nivelMama = 2
+          var ocupacionMama = "PANADERA"
+          var profesionMama = "COMERCIANTE"
+          var correoMama = "123@gmail.com"
+          var datosMama = "no especifica"
+
+          // Obtener los valores de los campos del padre
+          var cedulaPapa = "00000022"
+          var apellidosPapa = "GUTIERREZ"
+          var nombresPapa = "NONI"
+          var estadoPapa = 2
+          var nacionalidadPapa = "venezolano"
+          var edadPapa = 13
+          var direccionHPapa = "NO ESPECIFICA"
+          var telefonoHPapa = "NO ESPECIFICA"
+          var direccionTPapa = "NO ESPECIFICA";
+          var telefonoTPapa = "NO ESPECIFICA"
+          var nivelPapa = 2
+          var ocupacionPapa = "NO ESPECIFICA"
+          var profesionPapa = "NO ESPECIFICA"
+          var correoPapa = "NO ESPECIFICA"
+          var datosPapa = "NO_ESPECIFICA@gmail.com"
+
+          // Obtener los valores de los campos de la persona autorizada en caso de emergencia
+          var nombreCaso = "Lumpia"
+
+		  let request = new XMLHttpRequest();
+          request.open("POST", "guardar_inscripcion.php");
+          request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          request.onload = function (){
+            console.log(this.responseText);
+          }
+          request.send(`cedulaEstudiante=${cedulaEstudiante}&apellidosEstudiante=${apellidosEstudiante}&nombresEstudiante=${nombresEstudiante}&fechaEstudiante=${fechaEstudiante}&edadEstudiante=${edadEstudiante}&lugarNacimiento=${lugarNacimiento}&estadoEstudiante=${estadoEstudiante}&nacionalidadEstudiante=${nacionalidadEstudiante}&procedenciaEstudiante=${procedenciaEstudiante}&estadoHermano=${estadoHermano}&cantidadHermano=${cantidadHermano}&sexoHermano=${sexoHermano}&lugarHermano=${lugarHermano}&enfermedad=${enfermedad}&hospitalizado=${hospitalizado}&motivoHospitalizacion=${motivoHospitalizacion}&presentaAlergia=${presentaAlergia}&alergias=${alergias}&padeceCondicion${padeceCondicion}&condicion=${condicion}&informe${informe}&limitacion=${limitacion}&especialista=${especialista}&doctor=${doctor}&enfermarFacilidad=${enfermarFacilidad}&cedulaRepresentante=${cedulaRepresentante}&apellidosRepresentante=${apellidosRepresentante}&nombresRepresentante=${nombresRepresentante}&telefonoRepresentante=${telefonoRepresentante}&codigoParentezco=${codigoParentesco}&cedulaMama=${cedulaMama}&apellidosMama=${apellidosMama}&nombresMama=${nombresMama}&codigoCivilMama=${codigoCivilMama}&nacionalidadMama=${nacionalidadMama}&edadMama=${edadMama}&direccionHMama=${direccionHMama}&telefonoHMama=${telefonoHMama}&direccionTMama=${direccionTMama}&telefonoTMama=${telefonoTMama}&nivelMama=${nivelMama}&ocupacionMama=${ocupacionMama}&profesionMama=${profesionMama}&correoMama=${correoMama}&datosMama=${datosMama}&cedulaPapa=${cedulaPapa}&apellidosPapa=${apellidosPapa}&nombresPapa=${nombresPapa}&estadoPapa=${estadoPapa}&nacionalidadPapa=${nacionalidadPapa}&edadPapa=${edadPapa}&direccionHPapa=${direccionHPapa}&telefonoHPapa=${telefonoHPapa}&direccionTPapa=${direccionTPapa}&telefonoTPapa=${telefonoTPapa}&nivelPapa=${nivelPapa}&ocupacionPapa=${ocupacionPapa}&profesionPapa=${profesionPapa}&correoPapa=${correoPapa}&datosPapa=${datosPapa}`);
+          // Enviar los datos a guardar_inscripcion.php
+        //   $.ajax({
+        //     type: "POST",
+        //     url: "guardar_inscripcion.php",
+        //     data: {
+        //       // Datos del estudiante
+        //       cedulaEstudiante: cedulaEstudiante,
+        //       apellidosEstudiante: apellidosEstudiante,
+        //       nombresEstudiante: nombresEstudiante,
+        //       fechaEstudiante: fechaEstudiante,
+        //       edadEstudiante: edadEstudiante,
+        //       lugarNacimiento: lugarNacimiento,
+        //       estadoEstudiante: estadoEstudiante,
+        //       nacionalidadEstudiante: nacionalidadEstudiante,
+        //       procedenciaEstudiante: procedenciaEstudiante,
+        //       estadoHermano: estadoHermano,
+        //       cantidadHermano: cantidadHermano,
+        //       sexoHermano: sexoHermano,
+        //       lugarHermano: lugarHermano,
+
+        //       // Antecedentes prenatales
+        //       enfermedad: enfermedad,
+        //       hospitalizado: hospitalizado,
+        //       motivoHospitalizacion: motivoHospitalizacion,
+        //       presentaAlergia: presentaAlergia,
+        //       alergias: alergias,
+        //       padeceCondicion: padeceCondicion,
+        //       condicion: condicion,
+        //       informe: informe,
+        //       limitacion: limitacion,
+        //       especialista: especialista,
+        //       doctor: doctor,
+        //       enfermarFacilidad: enfermarFacilidad,
+
+        //       // Representante legal
+        //       cedulaRepresentante: cedulaRepresentante,
+        //       apellidosRepresentante: apellidosRepresentante,
+        //       nombresRepresentante: nombresRepresentante,
+        //       telefonoRepresentante: telefonoRepresentante,
+        //       codigoParentesco: codigoParentesco,
+
+        //       // Datos de la madre
+        //       cedulaMama: cedulaMama,
+        //       apellidosMama: apellidosMama,
+        //       nombresMama: nombresMama,
+        //       codigoCivilMama: codigoCivilMama,
+        //       nacionalidadMama: nacionalidadMama,
+        //       edadMama: edadMama,
+        //       direccionHMama: direccionHMama,
+        //       telefonoHMama: telefonoHMama,
+        //       direccionTMama: direccionTMama,
+        //       telefonoTMama: telefonoTMama,
+        //       nivelMama: nivelMama,
+        //       ocupacionMama: ocupacionMama,
+        //       profesionMama: profesionMama,
+        //       correoMama: correoMama,
+        //       datosMama: datosMama,
+
+        //       // Datos del padre
+        //       cedulaPapa: cedulaPapa,
+        //       apellidosPapa: apellidosPapa,
+        //       nombresPapa: nombresPapa,
+        //       estadoPapa: estadoPapa,
+        //       nacionalidadPapa: nacionalidadPapa,
+        //       edadPapa: edadPapa,
+        //       direccionHPapa: direccionHPapa,
+        //       telefonoHPapa: telefonoHPapa,
+        //       direccionTPapa: direccionTPapa,
+        //       telefonoTPapa: telefonoTPapa,
+        //       nivelPapa: nivelPapa,
+        //       ocupacionPapa: ocupacionPapa,
+        //       profesionPapa: profesionPapa,
+        //       correoPapa: correoPapa,
+        //       datosPapa: datosPapa,
+
+        //       // Persona autorizada en caso de emergencia
+        //       nombreCaso: nombreCaso
+        //     },
+        //     success: function (response) {
+        //       // Manejar la respuesta del servidor, si es necesario
+        //       console.log(response);
+
+        //       // Verificar si la respuesta es positiva
+        //       if (response.includes("Se ha inscrito exitosamente.")) {
+        //         alert("Se ha inscrito el estudiante");
+
+        //         // Redireccionar a la página de inscripción con la cédula del estudiante
+        //         window.location.href = "inscripcion.php?cedulaEstudiante=" + cedulaEstudiante;
+        //       } else {
+        //         // Mostrar mensaje de error
+        //         alert("Error en la inscripción:\n" + response);
+        //       }
+        //     },
+        //     error: function (xhr, status, error) {
+        //       // Manejar errores de la petición AJAX, si es necesario
+        //       console.error(xhr.responseText);
+        //       alert("Error en la solicitud AJAX");
+        //     }
+        //   });
+		}
+	</script>
+</body>
+</html>

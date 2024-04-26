@@ -1,0 +1,9 @@
+#periodo_actual{
+    background-color: rgba(179, 88, 72, 0.842);
+    color: white;
+    transition: 0.5s;
+}
+
+#periodo_actual:hover{
+    background-color: rgba(180, 41, 17, 0.842);
+}
