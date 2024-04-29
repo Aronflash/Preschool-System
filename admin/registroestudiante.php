@@ -153,6 +153,7 @@ if (!isset($_SESSION['codigo_usuario'])) {
                     <form autocomplete="off" enctype="multipart/form-data">
                       <label>Cédula Escolar: <input type="text" id="cedula_escolar" name="cedula_escolar" 
                       minlength="11" maxlength="11" pattern="\d{11}" title="Cédula escolar invalida, debe requerir 11 numeros." required></label>
+
                       <label>Apellidos: <input type="text" id="apellidos_estudiante" name="apellidos_estudiante"
                           pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ ]+" title="Solo letras y espacios permitidos."
                           minlength="5" maxlength="35" required></label>
@@ -161,6 +162,10 @@ if (!isset($_SESSION['codigo_usuario'])) {
                           minlength="3" maxlength="35" required></label>
                       <label>Fecha de Nacimiento: <input type="date" id="fecha_estudiante" name="fecha_estudiante"
                           max="<?php echo date('d-m-Y'); ?>" required></label>
+                        
+                        <label>Edad: <input type="text" id="edadestudiante" name="edadestudiante"                          
+                          minlength="3" maxlength="4" required readonly disabled></label>
+
                       <label>Lugar de Nacimiento: <input type="text" id="lugar_nacimiento" name="lugar_nacimiento"
                           pattern="[A-Za-z0-9ñÑáéíóúüÁÉÍÓÚÜ, .]+" title="Solo se permiten letras, números, comas y puntos"
                           minlength="5" maxlength="80" required></label>
@@ -433,6 +438,8 @@ if (!isset($_SESSION['codigo_usuario'])) {
                       </label>
                       <label>Fecha de Nacimiento: <input type="date" id="fecha_mama" name="fecha_mama"
                           max="<?php echo date('d-m-Y'); ?>"required></label>
+                        <label>Edad: <input type="text" id="edadmadre" name="edadmadre"                          
+                          minlength="3" maxlength="4" required readonly disabled></label>
                       <label>Teléfono: <input type="text" id="telefono_mama" pattern="[0-9]{11}" required
                         title="Teléfono inválido, debe contener 11 dígitos numéricos"
                         name="telefono_mama"></label>
@@ -525,6 +532,8 @@ if (!isset($_SESSION['codigo_usuario'])) {
                       </label>
                       <label>Fecha de Nacimiento: <input type="date" id="fecha_papa" name="fecha_papa"
                           max="<?php echo date('d-m-Y'); ?>"required></label>
+                      <label>Edad: <input type="text" id="edadpadre" name="edadpadre"                         
+                          minlength="3" maxlength="4" required readonly disabled></label>
                       <label>Teléfono: <input type="text" id="telefono_papa" pattern="[0-9]{11}" required
                         title="Teléfono inválido, debe contener 11 dígitos numéricos"
                         name="telefono_papa"></label>
@@ -622,9 +631,65 @@ if (!isset($_SESSION['codigo_usuario'])) {
             showSection(nextSection);
           }
         }
+        
+        document.getElementById('fecha_estudiante').addEventListener('change', function() {
+    var fechaNacimiento = this.value;
+    
+    if (fechaNacimiento !== '') {
+        var fechaNacimientoDate = new Date(fechaNacimiento);
+        var fechaActual = new Date();
+        var edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
+
+        // Ajustar la edad si aún no ha pasado el cumpleaños de este año
+        if (fechaActual.getMonth() < fechaNacimientoDate.getMonth() || (fechaActual.getMonth() === fechaNacimientoDate.getMonth() && fechaActual.getDate() < fechaNacimientoDate.getDate())) {
+            edad--;
+        }
+
+        document.getElementById('edadestudiante').value = edad;
+    } else {
+        document.getElementById('edadestudiante').value = '';
+    }
+});
+document.getElementById('fecha_mama').addEventListener('change', function() {
+    var fechaNacimiento = this.value;
+    
+    if (fechaNacimiento !== '') {
+        var fechaNacimientoDate = new Date(fechaNacimiento);
+        var fechaActual = new Date();
+        var edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
+
+        // Ajustar la edad si aún no ha pasado el cumpleaños de este año
+        if (fechaActual.getMonth() < fechaNacimientoDate.getMonth() || (fechaActual.getMonth() === fechaNacimientoDate.getMonth() && fechaActual.getDate() < fechaNacimientoDate.getDate())) {
+            edad--;
+        }
+
+        document.getElementById('edadmadre').value = edad;
+    } else {
+        document.getElementById('edadmadre').value = '';
+    }
+});
+document.getElementById('fecha_papa').addEventListener('change', function() {
+    var fechaNacimiento = this.value;
+    
+    if (fechaNacimiento !== '') {
+        var fechaNacimientoDate = new Date(fechaNacimiento);
+        var fechaActual = new Date();
+        var edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
+
+        // Ajustar la edad si aún no ha pasado el cumpleaños de este año
+        if (fechaActual.getMonth() < fechaNacimientoDate.getMonth() || (fechaActual.getMonth() === fechaNacimientoDate.getMonth() && fechaActual.getDate() < fechaNacimientoDate.getDate())) {
+            edad--;
+        }
+
+        document.getElementById('edadpadre').value = edad;
+    } else {
+        document.getElementById('edadpadre').value = '';
+    }
+});
+
         function completeForm() {
           // Obtener los valores de los campos del estudiante
-      
+          
           var cedulaEstudiante = document.getElementById('cedula_escolar').value;
           var apellidosEstudiante = document.getElementById('apellidos_estudiante').value;
           var nombresEstudiante = document.getElementById('nombres_estudiante').value;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2024 a las 17:47:08
+-- Tiempo de generación: 29-04-2024 a las 16:57:20
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -41,6 +41,15 @@ CREATE TABLE `antecedentes_paranatales` (
   `cedula_escolar` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Volcado de datos para la tabla `antecedentes_paranatales`
+--
+
+INSERT INTO `antecedentes_paranatales` (`codigo_antecedentes`, `enfermedad`, `hospitalizado`, `alergias`, `condicion`, `informe`, `limitacion`, `especialista`, `doctor`, `enfermar_facilidad`, `cedula_escolar`) VALUES
+(14, 'Ninguna', '0', '0', '0', '0', 'null', '0', '', '0', '30609563122'),
+(15, 'Ninguna', '0', '0', '0', '0', 'null', '0', '', '0', '30609563120'),
+(16, 'ninguna', '0', '0', '0', '0', 'null', '0', '', '0', '12121212121');
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +62,14 @@ CREATE TABLE `caso_emergencia` (
   `foto_emergencia` longblob DEFAULT NULL,
   `parentesco` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `caso_emergencia`
+--
+
+INSERT INTO `caso_emergencia` (`codigo_emergencia`, `nombre`, `foto_emergencia`, `parentesco`) VALUES
+(25, 'Carlos', '', 4),
+(26, 'dasdasf', '', 1);
 
 -- --------------------------------------------------------
 
@@ -122,6 +139,15 @@ CREATE TABLE `estudiante` (
   `estado_estudiante` int(3) NOT NULL DEFAULT 1,
   `edad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `estudiante`
+--
+
+INSERT INTO `estudiante` (`cedula_escolar`, `Nacionalidad`, `nombres`, `apellidos`, `fecha_nacimiento`, `lugar_nacimiento`, `estado`, `codigo_nacionalidad`, `estado_hermano`, `cantidad_hermano`, `sexo_hermano`, `lugar_hermano`, `cedula_representante`, `cedula_papa`, `cedula_mama`, `caso_emergencia`, `foto_estudiante`, `procedencia`, `estado_estudiante`, `edad`) VALUES
+('12121212121', '1', 'aaaaaaaaa', 'aaaaaaaa', '2003-10-26', 'kdjsakdasd', 'dkjashdashf', 1, 'No', 0, '', ' ', '30163757', '1589042', '30163757', 26, '', '0', 1, 20),
+('30609563120', '1', 'Holaaaaaa', 'Holaaaa', '2003-10-26', 'holaaaaaaa', 'holaaaaaaaa', 1, 'No', 0, '', ' ', '11111111', '1589042', '12234234', 25, '', '0', 1, 20),
+('30609563122', '1', 'Luis Aron', 'Rojas Porras', '2022-10-26', 'Merida', 'Táchira', 1, 'No', 0, 'No', ' ', '30163757', '1589042', '30163757', 25, '', '0', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -310,11 +336,12 @@ INSERT INTO `historico_nivel_seccion` (`codigo_nivelseccion`, `codigo_niveles`, 
 (85, 1, 1, 1, 8),
 (86, 2, 2, 1, 8),
 (87, 2, 3, 1, 8),
-(88, 3, 4, 1, 8),
-(89, 3, 5, 1, 8),
-(90, 4, 6, 1, 8),
-(91, 4, 7, 1, 8),
-(92, 2, 4, 1, 7);
+(88, 3, 5, 1, 8),
+(89, 3, 6, 1, 8),
+(90, 4, 7, 1, 8),
+(91, 4, 8, 1, 8),
+(92, 2, 4, 1, 7),
+(93, 2, 4, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -452,6 +479,15 @@ CREATE TABLE `inscripcion` (
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Volcado de datos para la tabla `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`codigo_inscripcion`, `cedula_escolar`, `codigo_nivelseccion`, `codigo_periodo`, `fecha`) VALUES
+('12121212121-7-78', '12121212121', 78, 7, '2024-04-20'),
+('30609563120-7-78', '30609563120', 78, 7, '2024-04-20'),
+('30609563122-7-78', '30609563122', 78, 7, '2024-04-19');
+
 -- --------------------------------------------------------
 
 --
@@ -479,6 +515,14 @@ CREATE TABLE `mama` (
   `telefono` varchar(20) DEFAULT NULL,
   `edad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `mama`
+--
+
+INSERT INTO `mama` (`cedula_mama`, `nombres`, `apellidos`, `codigo_estadocivil`, `codigo_nacionalidad`, `fecha_nacimiento`, `direccion_habitacion`, `telefono_habitacion`, `direccion_trabajo`, `telefono_trabajo`, `codigo_nivelacademico`, `ocupacion`, `profesion`, `correo`, `datos_extras`, `foto_mama`, `codigo_estado`, `telefono`, `edad`) VALUES
+('12234234', 'Aaaaaaaaaaaaaa', 'Veeeeeee', 1, 1, '2003-10-26', 'hdosadashfas', '02763962231', 'jsabfjsaf', '04247156694', 1, 'Docente', 'Docente', 'docente@gmail.com', 'dsafasfas', '', 1, '04247146694', 20),
+('30163757', 'Yulia Valentina', 'Ramón Lopez', 3, 1, '2000-10-08', 'ferrero tamyo', '02763962231', 'unefa', '04247156694', 4, 'Docente', 'Docente', 'docente@gmail.com', 'dsafasfas', '', 2, '04247146694', 23);
 
 -- --------------------------------------------------------
 
@@ -563,14 +607,13 @@ CREATE TABLE `nivel_seccion` (
 --
 
 INSERT INTO `nivel_seccion` (`codigo_nivelseccion`, `codigo_niveles`, `codigo_seccion`, `estado`) VALUES
-(85, 1, 1, 1),
-(86, 2, 2, 1),
-(87, 2, 3, 1),
-(88, 3, 5, 1),
-(89, 3, 6, 1),
-(90, 4, 7, 1),
-(91, 4, 8, 1),
-(93, 2, 4, 1);
+(78, 1, 1, 1),
+(79, 2, 2, 1),
+(80, 2, 3, 1),
+(81, 3, 4, 1),
+(82, 3, 5, 1),
+(83, 4, 6, 1),
+(84, 4, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -599,6 +642,13 @@ CREATE TABLE `papa` (
   `telefono` varchar(20) NOT NULL,
   `edad` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `papa`
+--
+
+INSERT INTO `papa` (`cedula_papa`, `nombres`, `apellidos`, `codigo_estadocivil`, `codigo_nacionalidad`, `fecha_nacimiento`, `direccion_habitacion`, `telefono_habitacion`, `direccion_trabajo`, `telefono_trabajo`, `codigo_nivelacademico`, `ocupacion`, `profesion`, `correo`, `datos_extras`, `foto_papa`, `codigo_estado`, `telefono`, `edad`) VALUES
+('1589042', 'Luis Aron', 'Rojas Porras', 3, 1, '2003-10-26', 'dsadas', '02765442342', 'unefa', '04122324312', 5, 'yo', 'yo', 'yo@gmail.com', 'dsada', '', 1, '04247146694', 20);
 
 -- --------------------------------------------------------
 
@@ -642,8 +692,8 @@ CREATE TABLE `periodo_academico` (
 --
 
 INSERT INTO `periodo_academico` (`codigo_periodo`, `nombre`, `fecha_inicio`, `fecha_fin`, `actual`) VALUES
-(7, '2023-2024', '2023-09-09', '2024-07-07', 0),
-(8, '2025-2026', '2025-05-01', '2026-05-01', 1);
+(7, '2023-2024', '2023-09-09', '2024-07-07', 1),
+(8, '2025-2026', '2025-05-01', '2026-05-01', 0);
 
 -- --------------------------------------------------------
 
@@ -661,6 +711,14 @@ CREATE TABLE `representante_legal` (
   `codigo_estado` int(3) NOT NULL DEFAULT 1,
   `nacionalidad` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `representante_legal`
+--
+
+INSERT INTO `representante_legal` (`cedula_representante`, `nombres`, `apellidos`, `telefono`, `codigo_parentesco`, `foto_representante`, `codigo_estado`, `nacionalidad`) VALUES
+('11111111', 'aaaaaaaaaa', 'aaaaaaaaaaaa', '04247146694', 1, '', 1, 1),
+('30163757', 'Yulia Valentina', 'Ramón Lopez', '04247146694', 2, '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -684,7 +742,28 @@ INSERT INTO `secciones` (`codigo_seccion`, `nombre`) VALUES
 (4, 'C'),
 (5, 'D'),
 (6, 'E'),
-(7, 'F');
+(7, 'F'),
+(8, 'G'),
+(9, 'H'),
+(10, 'I'),
+(11, 'J'),
+(12, 'K'),
+(13, 'L'),
+(14, 'M'),
+(15, 'N'),
+(16, 'Ñ'),
+(17, 'O'),
+(18, 'P'),
+(19, 'Q'),
+(20, 'R'),
+(21, 'S'),
+(22, 'T'),
+(23, 'U'),
+(24, 'V'),
+(25, 'W'),
+(26, 'X'),
+(27, 'Y'),
+(28, 'Z');
 
 -- --------------------------------------------------------
 
@@ -1069,7 +1148,7 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `historico_nivel_seccion`
 --
 ALTER TABLE `historico_nivel_seccion`
-  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT de la tabla `nivel_seccion`
