@@ -99,7 +99,14 @@ if (!isset($_SESSION['codigo_usuario'])) {
                                                         <option value="0">Seleccionar una opcion...</option>
                                                         <?php
                                                         include_once '../../php/conexion.php';
-                                                        $sentencia = "SELECT * FROM secciones";
+                                                        $sentencia = "SELECT codigo_seccion, nombre
+                                                        FROM secciones
+                                                        WHERE NOT EXISTS (
+                                                            SELECT 1
+                                                            FROM nivel_seccion
+                                                            WHERE nivel_seccion.codigo_seccion = secciones.codigo_seccion
+                                                        );";
+                                                        
                                                         $buscar = mysqli_query($conexion, $sentencia);
                                                         while ($r = mysqli_fetch_array($buscar)) {
                                                             $codigo = $r['codigo_seccion'];

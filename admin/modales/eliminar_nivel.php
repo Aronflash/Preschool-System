@@ -5,7 +5,7 @@
             <div class="modal-body">
                 <form action="../php/eliminar/eliminar_niveles.php" method="POST">
                     <input type="hidden" name="codigo_nivelseccion" value="<?php echo $r['codigo_nivelseccion']; ?>">
-                    <p class="text-center">¿Está seguro de eliminar el Nivel <?php echo $r['descripcion'] ?> y Seccion <?php echo $r['nombre'] ?> ?</p>
+                    <p class="text-center">¿Está seguro de eliminar el Nivel <?php echo $r['descripcion'] ?> y Seccion <?php echo $r['nombre'] ?> ? Borrarás cualquier dato que se encuentre relacionado con el</p>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-danger">Eliminar</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

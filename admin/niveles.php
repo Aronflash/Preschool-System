@@ -74,8 +74,7 @@ if (!isset($_SESSION['codigo_usuario'])) {
                                             <th>Codigo</th>
                                             <th>Nivel</th>
                                             <th>Seccion</th>
-                                            <th>Estado</th>
-                                            <th>Accion Nivel</th>
+                                            <th>Estado</th>                                            
                                             <th>Accion Nivel/Seccion</th>
                                         </tr>
                                     </thead>
@@ -109,17 +108,18 @@ if (!isset($_SESSION['codigo_usuario'])) {
                                                         <?php echo $r['nom']; ?>
                                                     </span>
                                                 </th>
-                                                <th>
+                                                <!-- <th> -->
                                                     <?php
-                                                    if ($mostrarBotonEditar) {
-                                                        echo "<a class='btn btn-success btn-sm' href='acciones/editar_niveles.php?id=" . $r['codigo_niveles'] . "'><i class='fa fa-edit'></i></a>";
-                                                    }
+                                                    // if ($mostrarBotonEditar) {
+                                                    //     echo "<a class='btn btn-success btn-sm' href='acciones/editar_niveles.php?id=" . $r['codigo_niveles'] . "'><i class='fa fa-edit'></i></a>";
+                                                    // }
                                                     ?>
-                                                </th>
+                                                <!-- </th> -->
                                                 <th>
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                         data-target="#elim<?php echo $r['codigo_nivelseccion']; ?>">Eliminar
                                                         &nbsp;<i class="fa fa-trash"></i></button>
+                                                        
                                                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
                                                         data-target="#act<?php echo $r['codigo_nivelseccion']; ?>">Activar
                                                         &nbsp;<i class="fa fa-edit"></i></button>
