@@ -67,25 +67,25 @@ else
         }
         else
         {
-            echo "hoa";
-            // $query = "INSERT INTO nivel_seccion(codigo_niveles, codigo_seccion) VALUES ('$codigo_niveles', '$codigo_seccion')";
-            // $queri = mysqli_query($conexion, $query);
+           
+            $query = "INSERT INTO nivel_seccion(codigo_niveles, codigo_seccion) VALUES ('$codigo_niveles', '$codigo_seccion')";
+            $queri = mysqli_query($conexion, $query);
 
-            // if ($queri) {
-            // echo '
-            // <script>
-            //     alert("NIVEL/SECCIÓN REGISTRADO");
-            //     window.location="../admin/niveles.php";
-            // </script>
-            // ';
-            //     } else {
-            //     echo '
-            //         <script>
-            //             alert("NIVEL/SECCIÓN NO REGISTRADO");
-            //             window.location="../admin/acciones/agregar_nise.php";
-            //         </script>
-            //     ';
-            // }
+            if ($queri) {
+            echo '
+            <script>
+                alert("NIVEL/SECCIÓN REGISTRADO");
+                window.location="../admin/niveles.php";
+            </script>
+            ';
+                } else {
+                echo '
+                    <script>
+                        alert("NIVEL/SECCIÓN NO REGISTRADO");
+                        window.location="../admin/acciones/agregar_nise.php";
+                    </script>
+                ';
+            }
         }
 
     

@@ -100,12 +100,15 @@ if (!isset($_SESSION['codigo_usuario'])) {
                                                         <?php
                                                         include_once '../../php/conexion.php';
                                                         $sentencia = "SELECT codigo_seccion, nombre
-                                                        FROM secciones
-                                                        WHERE NOT EXISTS (
-                                                            SELECT 1
-                                                            FROM nivel_seccion
-                                                            WHERE nivel_seccion.codigo_seccion = secciones.codigo_seccion
-                                                        );";
+                                                        FROM secciones";
+
+// $sentencia = "SELECT codigo_seccion, nombre
+// FROM secciones
+// WHERE NOT EXISTS (
+//     SELECT 1
+//     FROM nivel_seccion
+//     WHERE nivel_seccion.codigo_seccion = secciones.codigo_seccion
+// );"
                                                         
                                                         $buscar = mysqli_query($conexion, $sentencia);
                                                         while ($r = mysqli_fetch_array($buscar)) {
