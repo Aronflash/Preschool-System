@@ -119,10 +119,6 @@ if (!isset($_SESSION['codigo_usuario'])) {
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                                         data-target="#elim<?php echo $r['codigo_nivelseccion']; ?>">Eliminar
                                                         &nbsp;<i class="fa fa-trash"></i></button>
-                                                        
-                                                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
-                                                        data-target="#act<?php echo $r['codigo_nivelseccion']; ?>">Activar
-                                                        &nbsp;<i class="fa fa-edit"></i></button>
                                                 </th>
                                             </tr>
 

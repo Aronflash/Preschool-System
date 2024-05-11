@@ -53,95 +53,66 @@ if (!isset($_SESSION['codigo_usuario'])) {
                 <div class="col-md-12">
                     <div class="border-top">
                         <div class="card-body">
-                            <a href="../periodos.php" type="button" class="btn btn-warning">Regresar</a>
+                            <a href="../niveles.php" type="button" class="btn btn-warning">Regresar</a>
                         </div>
                     </div>
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="card">
-                                    <form class="form-horizontal" action="../../php/nivelseccion.php" method="POST"
-                                        enctype="multipart/form-data" id="formulario">
-                                        <div class="card-body">
-                                            <div class="form-group row formulario__grupo" id="grupo__codigo_niveles">
-                                                <label for="codigo_niveles"
-                                                    class="col-sm-3 text-right control-label col-form-label formulario__label">Nivel:</label>
-                                                <div class="col-sm-9 formulario__grupo-input">
-                                                    <select class="form-control" id="codigo_niveles"
-                                                        name="codigo_niveles">
-                                                        <option value="0">Seleccionar una opcion...</option>
-                                                        <?php
-                                                        include_once '../../php/conexion.php';
-                                                        $sentencia = "SELECT * FROM niveles";
-                                                        $buscar = mysqli_query($conexion, $sentencia);
-                                                        while ($r = mysqli_fetch_array($buscar)) {
-                                                            $codigo = $r['codigo_niveles'];
-                                                            $nombre = $r['descripcion'];
-                                                            ?>
-                                                            <option required value="<?php echo $codigo ?>">
-                                                                <?php echo $nombre ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                                </div>
-                                                <p class="formulario__input-error">Debe seleccionar un nivel.
-                                                </p>
-                                            </div>
-                                            <div class="form-group row formulario__grupo" id="grupo__codigo_seccion">
-                                                <label for="codigo_seccion"
-                                                    class="col-sm-3 text-right control-label col-form-label formulario__label">Seccion:</label>
-                                                <div class="col-sm-9 formulario__grupo-input">
-                                                    <select class="form-control" id="codigo_seccion"
-                                                        name="codigo_seccion">
-                                                        <option value="0">Seleccionar una opcion...</option>
-                                                        <?php
-                                                        include_once '../../php/conexion.php';
-                                                        $sentencia = "SELECT codigo_seccion, nombre
-                                                        FROM secciones";
-
-// $sentencia = "SELECT codigo_seccion, nombre
-// FROM secciones
-// WHERE NOT EXISTS (
-//     SELECT 1
-//     FROM nivel_seccion
-//     WHERE nivel_seccion.codigo_seccion = secciones.codigo_seccion
-// );"
-                                                        
-                                                        $buscar = mysqli_query($conexion, $sentencia);
-                                                        while ($r = mysqli_fetch_array($buscar)) {
-                                                            $codigo = $r['codigo_seccion'];
-                                                            $nombre = $r['nombre'];
-                                                            ?>
-                                                            <option required value="<?php echo $codigo ?>">
-                                                                <?php echo $nombre ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
-                                                </div>
-                                                <p class="formulario__input-error">Debe seleccionar una seccion.
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="border-top">
-                                            <div class="card-body">
-                                                <div class="formulario__mensaje" id="formulario__mensaje">
-                                                    <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por
-                                                        favor rellene el formulario correctamente. </p>
-                                                </div>
-                                                <br>
-                                                <div class="formulario__grupo formulario__grupo-btn-enviar">
-                                                    <button type="submit" class="btn btn-primary"
-                                                        id="enviar">Registrar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
+                                <form class="form-horizontal" action="../../php/nivelseccion.php" method="POST"
+        enctype="multipart/form-data" id="formulario">
+        <div class="card-body">
+            <div class="form-group row formulario__grupo" id="grupo__codigo_niveles">
+                <label for="codigo_niveles"
+                    class="col-sm-3 text-right control-label col-form-label formulario__label">Nivel:</label>
+                <div class="col-sm-9 formulario__grupo-input">
+                    <select class="form-control" id="codigo_niveles" name="codigo_niveles">
+                        <option value="0">Seleccionar una opcion...</option>
+                        <?php
+                        include_once '../../php/conexion.php';
+                        $sentencia = "SELECT * FROM niveles";
+                        $buscar = mysqli_query($conexion, $sentencia);
+                        while ($r = mysqli_fetch_array($buscar)) {
+                            $codigo = $r['codigo_niveles'];
+                            $nombre = $r['descripcion'];
+                        ?>
+                            <option value="<?php echo $codigo ?>">
+                                <?php echo $nombre ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error"></p>
+            </div>
+            <div class="form-group row formulario__grupo" id="grupo__codigo_seccion">
+                <label for="codigo_seccion"
+                    class="col-sm-3 text-right control-label col-form-label formulario__label">Seccion:</label>
+                <div class="col-sm-9 formulario__grupo-input">
+                    <select class="form-control" id="codigo_seccion" name="codigo_seccion">
+                        <option value="0">Seleccionar una opcion...</option>                        
+                    </select>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error"></p>
+            </div>
+        </div>
+        <div class="border-top">
+            <div class="card-body">
+                <div class="formulario__mensaje" id="formulario__mensaje">
+                    <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por
+                        favor rellene el formulario correctamente. </p>
+                </div>
+                <br>
+                <div class="formulario__grupo formulario__grupo-btn-enviar">
+                    <button type="submit" class="btn btn-primary" id="enviar">Registrar</button>
+                </div>
+            </div>
+        </div>
+    </form>
                                 </div>
                             </div>
                         </div>
@@ -167,9 +138,61 @@ if (!isset($_SESSION['codigo_usuario'])) {
             <script src="../../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
             <script src="../../assets/libs/quill/dist/quill.min.js"></script>
             <script src="../validaciones/nise.js"></script>
+            
             <script src="../../assets/libs/toastr/build/toastr.min.js"></script>
             <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                   // Esta función se activa cuando cambia la selección del nivel en el formulario
+document.getElementById('codigo_niveles').addEventListener('change', function() {
+    var nivelSeleccionado = this.value;
+    // Llamar a la función que envía el valor seleccionado a través de AJAX
+    enviarNivelSeleccionado(nivelSeleccionado);
+});
+
+// Función para enviar el nivel seleccionado al servidor y manejar la respuesta
+function enviarNivelSeleccionado(nivelSeleccionado) {
+    // Crear objeto XMLHttpRequest
+    var xhttp = new XMLHttpRequest();
+
+    // Especificar el método y la URL del archivo PHP que recibirá los datos
+    xhttp.open("POST", "../../php/recibir_nivel.php", true);
+
+    // Establecer el encabezado de la solicitud
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    // Definir qué hacer cuando se recibe la respuesta
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            // Manejar la respuesta del servidor aquí
+            var respuesta = JSON.parse(this.responseText);
+
+            // Obtener el select de secciones
+            var selectSecciones = document.getElementById('codigo_seccion');
+
+            // Limpiar las opciones anteriores
+            selectSecciones.innerHTML = '<option value="0">Seleccionar una opcion...</option>';
+
+            // Verificar si hay secciones disponibles
+            if (respuesta.length > 0) {
+                // Iterar sobre las secciones y agregarlas como opciones al select
+                for (var i = 0; i < respuesta.length; i++) {
+                    var codigoSeccion = respuesta[i].codigo_seccion;
+                    var nombreSeccion = respuesta[i].nombre;
+                    selectSecciones.innerHTML += '<option value="' + codigoSeccion + '">' + nombreSeccion + '</option>';
+                }
+            } else {
+                // Si no hay secciones disponibles
+                selectSecciones.innerHTML = '<option value="0">No hay secciones disponibles</option>';
+            }
+        }
+    };
+
+    // Enviar la solicitud con el valor seleccionado como parámetro
+    xhttp.send("nivelSeleccionado=" + nivelSeleccionado);
+}
+    
+            </script>
 
 </body>
 

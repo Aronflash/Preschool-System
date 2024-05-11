@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $codigoMama = $rowMama['cedula_mama'];
         } else {
             // No existe, agregar nuevo registro
-            $sqlAgregarMama = "INSERT INTO mama (cedula_mama, nombres, apellidos, codigo_estadocivil, codigo_nacionalidad, fecha_nacimiento, direccion_habitacion, telefono_habitacion, direccion_trabajo, telefono_trabajo, codigo_nivelacademico, ocupacion, profesion, correo, datos_extras, telefono, edad) VALUES ('$cedulaMama', '$nombresMama', '$apellidosMama', '$codigoCivilMama', '$nacionalidadMama', '$fechaMama', '$direccionHMama', '$telefonoHMama', '$direccionTMama', '$telefonoTMama', '$nivelMama', '$ocupacionMama', '$profesionMama', '$correoMama', '$datosMama', '$telefonoMama', '".calcularEdad($fechaMama)."')";
+            $sqlAgregarMama = "INSERT INTO mama (cedula_mama, nombres, apellidos, codigo_estadocivil, codigo_nacionalidad, fecha_nacimiento, direccion_habitacion, telefono_habitacion, direccion_trabajo, telefono_trabajo, codigo_nivelacademico, ocupacion, profesion, correo, datos_extras, telefono) VALUES ('$cedulaMama', '$nombresMama', '$apellidosMama', '$codigoCivilMama', '$nacionalidadMama', '$fechaMama', '$direccionHMama', '$telefonoHMama', '$direccionTMama', '$telefonoTMama', '$nivelMama', '$ocupacionMama', '$profesionMama', '$correoMama', '$datosMama', '$telefonoMama')";
             $resultAgregarMama = $conexion->query($sqlAgregarMama);
 
             // Obtener el código recién insertado

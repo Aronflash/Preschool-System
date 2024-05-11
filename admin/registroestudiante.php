@@ -436,10 +436,9 @@ if (!isset($_SESSION['codigo_usuario'])) {
                           ?>
                         </select>
                       </label>
-                      <label>Fecha de Nacimiento: <input type="date" id="fecha_mama" name="fecha_mama"
+                      <label>edad: <input type="number" id="fecha_mama" name="fecha_mama"
                           max="<?php echo date('d-m-Y'); ?>"required></label>
-                        <label>Edad: <input type="text" id="edadmadre" name="edadmadre"                          
-                          minlength="3" maxlength="4" required readonly disabled></label>
+                        
                       <label>Teléfono: <input type="text" id="telefono_mama" pattern="[0-9]{11}" required
                         title="Teléfono inválido, debe contener 11 dígitos numéricos"
                         name="telefono_mama"></label>
@@ -530,10 +529,8 @@ if (!isset($_SESSION['codigo_usuario'])) {
                           ?>
                         </select>
                       </label>
-                      <label>Fecha de Nacimiento: <input type="date" id="fecha_papa" name="fecha_papa"
-                          max="<?php echo date('d-m-Y'); ?>"required></label>
-                      <label>Edad: <input type="text" id="edadpadre" name="edadpadre"                         
-                          minlength="3" maxlength="4" required readonly disabled></label>
+                      <label>Edad: <input type="number" id="fecha_papa" name="fecha_papa"
+                          max="<?php echo date('d-m-Y'); ?>"required></label>                      
                       <label>Teléfono: <input type="text" id="telefono_papa" pattern="[0-9]{11}" required
                         title="Teléfono inválido, debe contener 11 dígitos numéricos"
                         name="telefono_papa"></label>
@@ -650,24 +647,7 @@ if (!isset($_SESSION['codigo_usuario'])) {
         document.getElementById('edadestudiante').value = '';
     }
 });
-document.getElementById('fecha_mama').addEventListener('change', function() {
-    var fechaNacimiento = this.value;
-    
-    if (fechaNacimiento !== '') {
-        var fechaNacimientoDate = new Date(fechaNacimiento);
-        var fechaActual = new Date();
-        var edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
 
-        // Ajustar la edad si aún no ha pasado el cumpleaños de este año
-        if (fechaActual.getMonth() < fechaNacimientoDate.getMonth() || (fechaActual.getMonth() === fechaNacimientoDate.getMonth() && fechaActual.getDate() < fechaNacimientoDate.getDate())) {
-            edad--;
-        }
-
-        document.getElementById('edadmadre').value = edad;
-    } else {
-        document.getElementById('edadmadre').value = '';
-    }
-});
 document.getElementById('fecha_papa').addEventListener('change', function() {
     var fechaNacimiento = this.value;
     
