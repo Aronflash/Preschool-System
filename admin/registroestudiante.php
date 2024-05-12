@@ -540,7 +540,7 @@ if (!isset($_SESSION['codigo_usuario'])) {
                       <label>Fecha de Nacimiento: <input type="date" id="fecha_papa" name="fecha_papa"
                           max="<?php echo date('d-m-Y'); ?>" required></label>
                         
-                        <label>Edad: <input type="text" id="edadmadre" name="edadpadre"                          
+                        <label>Edad: <input type="text" id="edadpadre"                          
                           minlength="3" maxlength="4" required readonly disabled></label>                                           
                       <label>Teléfono: <input type="text" id="telefono_papa" pattern="[0-9]{11}" required
                         title="Teléfono inválido, debe contener 11 dígitos numéricos"
