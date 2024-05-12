@@ -99,7 +99,71 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($resultAntecedentesExist->num_rows > 0) {
             // Ya existen antecedentes parentales, mostrar mensaje de éxito
-            echo "Se ha inscrito exitosamente.";
+            $sqlupdate="UPDATE `antecedentes_paranatales` SET `enfermedad`='$enfermedad',`hospitalizado`='$hospitalizado',`alergias`='$presentaAlergia',`condicion`='$condicion',`informe`='$informe',`limitacion`='$limitacion',`especialista`='$especialista',`doctor`='$doctor',`enfermar_facilidad`='$enfermarFacilidad' WHERE `cedula_escolar`='$codigoEstudiante'";
+            $resultupdate = $conexion->query($sqlupdate);
+            if($resultupdate)
+            {
+                echo "Se ha inscrito exitosamente.";
+            }
+        
+            //verificando si existe alguna persona
+            $sqlaron="SELECT * FROM representante_legal WHERE `cedula_representante`='$cedulaRepresentante'";
+            $bien=$conexion->query($sqlaron);
+            if($bien->num_rows>0)
+            {
+                //acutalizando los datos de la persona
+                $sqlupdate="UPDATE `representante_legal` SET `nombres`='$nombresRepresentante',`apellidos`='$apellidosRepresentante',`telefono`='$telefonoRepresentante',`codigo_parentesco`='$codigoParentesco', `nacionalidad`='$nacionalidadRepresentante' WHERE `cedula_representante`='$cedulaRepresentante'";
+                $resultupdate = $conexion->query($sqlupdate);
+            }
+
+            //Verificando si existe los datos de la mamá
+            $sqlaron="SELECT * FROM mama WHERE cedula_mama = '$cedulaMama'";
+            $bien=$conexion->query($sqlaron);
+            if($bien->num_rows>0)
+            {
+                //Actualizando los datos
+                $sqlupdate="UPDATE `mama` SET `nombres`='$nombresMama',`apellidos`='$apellidosMama',`codigo_estadocivil`='$codigoCivilMama',`codigo_nacionalidad`='$nacionalidadMama',`fecha_nacimiento`='$fechaMama',`direccion_habitacion`='$direccionHMama',`telefono_habitacion`='$telefonoHMama',`direccion_trabajo`='$direccionTMama',`telefono_trabajo`='$telefonoTMama',`codigo_nivelacademico`='$nivelMama',`ocupacion`='$ocupacionMama',`profesion`='$ocupacionMama',`correo`='$correoMama',`datos_extras`='$datosMama',`telefono`='$telefonoMama' WHERE `cedula_mama`='$cedulaMama'";
+                $resultupdate = $conexion->query($sqlupdate);
+            }
+            
+           //Verificando si existe un papá con esos datos
+           $sqlaron = "SELECT * FROM papa WHERE cedula_papa = '$cedulaPapa'";
+           $bien=$conexion->query($sqlaron);
+            if($bien->num_rows>0)
+            {
+                //actualizando datos
+                $sqlupdate="UPDATE `papa` SET `nombres`='$nombresPapa',`apellidos`='$apellidosPapa',`codigo_estadocivil`='$estadoPapa',`codigo_nacionalidad`='$nacionalidadPapa',`fecha_nacimiento`='$fechaPapa',`direccion_habitacion`='$direccionHPapa',`telefono_habitacion`='$telefonoHPapa',`direccion_trabajo`='$direccionTPapa',`telefono_trabajo`='$telefonoTPapa',`codigo_nivelacademico`='$nivelPapa',`ocupacion`='$ocupacionPapa',`profesion`='$profesionPapa',`correo`='$correoPapa',`datos_extras`='$datosPapa',`telefono`='$telefonoPapa' WHERE `cedula_papa`='$cedulaPapa'";
+                $resultupdate = $conexion->query($sqlupdate);
+            }
+
+            //Verificando si existe alguien para caso de emergencia
+            $sqlaron = "SELECT * FROM caso_emergencia WHERE nombre = '$nombreCaso'";
+            $bien=$conexion->query($sqlaron);
+            if($bien->num_rows>0)
+            {
+                
+                $filaaron=mysqli_fetch_assoc($bien);
+                $codigo=$filaaron['codigo_emergencia'];
+                //actualizando datos
+                $sqlupdate="UPDATE `caso_emergencia` SET `parentesco`='$parentescoCaso' WHERE `nombre`='$nombreCaso'";
+                $resultupdate = $conexion->query($sqlupdate);
+            }
+
+            //Verificando si existe algun estudiante
+            $sqlaron = "SELECT * FROM estudiante WHERE `cedula_escolar`='$cedulaEstudiante'";
+            $bien=$conexion->query($sqlaron);
+            if($bien->num_rows>0)
+            {
+               
+                //actualizando datos                
+                $sqlupdate="UPDATE `estudiante` SET `Nacionalidad`='$nacionalidadEstudiante',`nombres`='$nombresEstudiante',`apellidos`='$apellidosEstudiante',`fecha_nacimiento`='$fechaEstudiante',`lugar_nacimiento`='$lugarNacimiento',`estado`='$estadoEstudiante',`codigo_nacionalidad`='$nacionalidadEstudiante',`estado_hermano`='$estadoHermano',`cantidad_hermano`='$cantidadHermano', `lugar_hermano`='$lugarHermano',`cedula_representante`='$cedulaRepresentante',`cedula_papa`='$cedulaPapa',`cedula_mama`='$cedulaMama',`caso_emergencia`='$codigo', `procedencia`='$procedenciaEstudiante' WHERE `cedula_escolar`='$cedulaEstudiante'";
+                $resultupdate = $conexion->query($sqlupdate);
+
+                echo "<script>console.log('$fechaEstudiante');</script>";
+                
+            }
+
+
         } else {
             // Agregar antecedentes parANAtales
             $sqlAntecedentes = "INSERT INTO antecedentes_paranatales (enfermedad, hospitalizado, alergias, condicion, informe, limitacion, especialista, doctor, enfermar_facilidad, cedula_escolar) VALUES ('$enfermedad', '$hospitalizado', '$presentaAlergia', '$condicion', '$informe', '$limitacion', '$especialista', '$doctor', '$enfermarFacilidad', '$codigoEstudiante')";
@@ -123,6 +187,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Ya existe, obtener el código
             $rowRepresentante = $resultRepresentante->fetch_assoc();
             $codigoRepresentante = $rowRepresentante['cedula_representante'];
+
+           
+           
+
+            
         } else {
             // No existe, agregar nuevo registro
             $sqlAgregarRepresentante = "INSERT INTO representante_legal (cedula_representante, nombres, apellidos, telefono, codigo_parentesco, nacionalidad) VALUES ('$cedulaRepresentante', '$nombresRepresentante', '$apellidosRepresentante', '$telefonoRepresentante', '$codigoParentesco', $nacionalidadRepresentante)";

@@ -19,16 +19,18 @@ $(document).ready(function () {
                     $('#telefono_representante').val(representanteInfo.telefono);
                     $('#codigo_parentesco').val(representanteInfo.codigoParentesco);
 
-                    $('#apellidos_representante').prop('disabled', true);
-                    $('#nombres_representante').prop('disabled', true);
-                    $('#telefono_representante').prop('disabled', true);
-                    $('#codigo_parentesco').prop('disabled', true);
+                    $('#apellidos_representante').prop('enabled', true);
+                    $('#nombres_representante').prop('enabled', true);
+                    $('#telefono_representante').prop('enabled', true);
+                    $('#codigo_parentesco').prop('enabled', true);
                 } else {
 
-                    $('#apellidos_representante').prop('disabled', false);
-                    $('#nombres_representante').prop('disabled', false);
-                    $('#telefono_representante').prop('disabled', false);
-                    $('#codigo_parentesco').prop('disabled', false);
+                    $('#apellidos_representante, #nombres_representante, #telefono_representante, #codigo_parentesco').val('');
+
+                    // $('#apellidos_representante').prop('disabled', false);
+                    // $('#nombres_representante').prop('disabled', false);
+                    // $('#telefono_representante').prop('disabled', false);
+                    // $('#codigo_parentesco').prop('disabled', false);
                 }
             },
             error: function (xhr, status, error) {
@@ -66,39 +68,39 @@ $(document).ready(function () {
                     $('#datos_mama').val(madreInfo.datosExtras);
 
                     // Deshabilitar los campos
-                    $('#apellidos_mama').prop('disabled', true);
-                    $('#nombres_mama').prop('disabled', true);
-                    $('#codigo_civilmama').prop('disabled', true);
-                    $('#nacionalidad_mama').prop('disabled', true);
-                    $('#fecha_mama').prop('disabled', true);
-                    $('#telefono_mama').prop('disabled', true);
-                    $('#direccionh_mama').prop('disabled', true);
-                    $('#telefonoh_mama').prop('disabled', true);
-                    $('#direcciont_mama').prop('disabled', true);
-                    $('#telefonot_mama').prop('disabled', true);
-                    $('#nivel_mama').prop('disabled', true);
-                    $('#ocupacion_mama').prop('disabled', true);
-                    $('#profesion_mama').prop('disabled', true);
-                    $('#correo_mama').prop('disabled', true);
-                    $('#datos_mama').prop('disabled', true);
+                    $('#apellidos_mama').prop('enabled', true);
+                    $('#nombres_mama').prop('enabled', true);
+                    $('#codigo_civilmama').prop('enabled', true);
+                    $('#nacionalidad_mama').prop('enabled', true);
+                    $('#fecha_mama').prop('enabled', true);
+                    $('#telefono_mama').prop('enabled', true);
+                    $('#direccionh_mama').prop('enabled', true);
+                    $('#telefonoh_mama').prop('enabled', true);
+                    $('#direcciont_mama').prop('enabled', true);
+                    $('#telefonot_mama').prop('enabled', true);
+                    $('#nivel_mama').prop('enabled', true);
+                    $('#ocupacion_mama').prop('enabled', true);
+                    $('#profesion_mama').prop('enabled', true);
+                    $('#correo_mama').prop('enabled', true);
+                    $('#datos_mama').prop('enabled', true);
                 } else {
-
-                    // Quitar la propiedad 'disabled'
-                    $('#apellidos_mama').prop('disabled', false);
-                    $('#nombres_mama').prop('disabled', false);
-                    $('#codigo_civilmama').prop('disabled', false);
-                    $('#nacionalidad_mama').prop('disabled', false);
-                    $('#fecha_mama').prop('disabled', false);
-                    $('#telefono_mama').prop('disabled', false);
-                    $('#direccionh_mama').prop('disabled', false);
-                    $('#telefonoh_mama').prop('disabled', false);
-                    $('#direcciont_mama').prop('disabled', false);
-                    $('#telefonot_mama').prop('disabled', false);
-                    $('#nivel_mama').prop('disabled', false);
-                    $('#ocupacion_mama').prop('disabled', false);
-                    $('#profesion_mama').prop('disabled', false);
-                    $('#correo_mama').prop('disabled', false);
-                    $('#datos_mama').prop('disabled', false);
+                    $('#apellidos_mama, #nombres_mama, #codigo_civilmama, #nacionalidad_mama, #fecha_mama, #telefono_mama, #direccionh_mama, #direccionh_mama, #telefonoh_mama, #direcciont_mama, #telefonot_mama, #nivel_mama, #ocupacion_mama, #profesion_mama, #correo_mama, #datos_mama').val('');
+                   
+                    // $('#apellidos_mama').prop('disabled', false);
+                    // $('#nombres_mama').prop('disabled', false);
+                    // $('#codigo_civilmama').prop('disabled', false);
+                    // $('#nacionalidad_mama').prop('disabled', false);
+                    // $('#fecha_mama').prop('disabled', false);
+                    // $('#telefono_mama').prop('disabled', false);
+                    // $('#direccionh_mama').prop('disabled', false);
+                    // $('#telefonoh_mama').prop('disabled', false);
+                    // $('#direcciont_mama').prop('disabled', false);
+                    // $('#telefonot_mama').prop('disabled', false);
+                    // $('#nivel_mama').prop('disabled', false);
+                    // $('#ocupacion_mama').prop('disabled', false);
+                    // $('#profesion_mama').prop('disabled', false);
+                    // $('#correo_mama').prop('disabled', false);
+                    // $('#datos_mama').prop('disabled', false);
 
                     // Mostrar un mensaje o manejar según tus necesidades
                 }
@@ -139,39 +141,41 @@ $(document).ready(function () {
                     $('#datos_papa').val(papaInfo.datosExtras);
 
                     // Deshabilitar los campos
-                    $('#apellidos_papa').prop('disabled', true);
-                    $('#nombres_papa').prop('disabled', true);
-                    $('#codigo_civilpapa').prop('disabled', true);
-                    $('#nacionalidad_papa').prop('disabled', true);
-                    $('#fecha_papa').prop('disabled', true);
-                    $('#telefono_papa').prop('disabled', true);
-                    $('#direccionh_papa').prop('disabled', true);
-                    $('#telefonoh_papa').prop('disabled', true);
-                    $('#direcciont_papa').prop('disabled', true);
-                    $('#telefonot_papa').prop('disabled', true);
-                    $('#nivel_papa').prop('disabled', true);
-                    $('#ocupacion_papa').prop('disabled', true);
-                    $('#profesion_papa').prop('disabled', true);
-                    $('#correo_papa').prop('disabled', true);
-                    $('#datos_papa').prop('disabled', true);
+                    $('#apellidos_papa').prop('enabled', true);
+                    $('#nombres_papa').prop('enabled', true);
+                    $('#codigo_civilpapa').prop('enabled', true);
+                    $('#nacionalidad_papa').prop('enabled', true);
+                    $('#fecha_papa').prop('enabled', true);
+                    $('#telefono_papa').prop('enabled', true);
+                    $('#direccionh_papa').prop('enabled', true);
+                    $('#telefonoh_papa').prop('enabled', true);
+                    $('#direcciont_papa').prop('enabled', true);
+                    $('#telefonot_papa').prop('enabled', true);
+                    $('#nivel_papa').prop('enabled', true);
+                    $('#ocupacion_papa').prop('enabled', true);
+                    $('#profesion_papa').prop('enabled', true);
+                    $('#correo_papa').prop('enabled', true);
+                    $('#datos_papa').prop('enabled', true);
                 } else {
 
+                    $('#apellidos_papa, #nombres_papa, #codigo_civilpapa, #nacionalidad_papa, #fecha_papa, #telefono_papa, #direccionh_papa, #telefonoh_papa, #direcciont_papa, #telefonot_papa, #nivel_papa, #ocupacion_papa, #profesion_papa, #correo_papa, #datos_papa').val('');
+                    
                     // Quitar la propiedad 'disabled'
-                    $('#apellidos_papa').prop('disabled', false);
-                    $('#nombres_papa').prop('disabled', false);
-                    $('#codigo_civilpapa').prop('disabled', false);
-                    $('#nacionalidad_papa').prop('disabled', false);
-                    $('#fecha_papa').prop('disabled', false);
-                    $('#telefono_papa').prop('disabled', false);
-                    $('#direccionh_papa').prop('disabled', false);
-                    $('#telefonoh_papa').prop('disabled', false);
-                    $('#direcciont_papa').prop('disabled', false);
-                    $('#telefonot_papa').prop('disabled', false);
-                    $('#nivel_papa').prop('disabled', false);
-                    $('#ocupacion_papa').prop('disabled', false);
-                    $('#profesion_papa').prop('disabled', false);
-                    $('#correo_papa').prop('disabled', false);
-                    $('#datos_papa').prop('disabled', false);
+                    // $('#apellidos_papa').prop('disabled', false);
+                    // $('#nombres_papa').prop('disabled', false);
+                    // $('#codigo_civilpapa').prop('disabled', false);
+                    // $('#nacionalidad_papa').prop('disabled', false);
+                    // $('#fecha_papa').prop('disabled', false);
+                    // $('#telefono_papa').prop('disabled', false);
+                    // $('#direccionh_papa').prop('disabled', false);
+                    // $('#telefonoh_papa').prop('disabled', false);
+                    // $('#direcciont_papa').prop('disabled', false);
+                    // $('#telefonot_papa').prop('disabled', false);
+                    // $('#nivel_papa').prop('disabled', false);
+                    // $('#ocupacion_papa').prop('disabled', false);
+                    // $('#profesion_papa').prop('disabled', false);
+                    // $('#correo_papa').prop('disabled', false);
+                    // $('#datos_papa').prop('disabled', false);
 
                     // Mostrar un mensaje o manejar según tus necesidades
                 }
@@ -193,26 +197,12 @@ $(document).ready(function () {
             data: { cedulaEscolar: cedulaEscolar },
             dataType: 'json',
             success: function (estudianteInfo) {
-                if (estudianteInfo) {
-                    // Llenar los campos con la información del estudiante
-                    $('#apellidos_estudiante').val(estudianteInfo.apellidos);
-                    $('#nombres_estudiante').val(estudianteInfo.nombres);
-                    // Agregar el resto de campos según la estructura de tu base de datos
-
-                    // Deshabilitar los campos
-                    // $('#apellidos_estudiante').prop('disabled', true);
-                    // $('#nombres_estudiante').prop('disabled', true);
-                    // Deshabilitar el resto de campos según la estructura de tu formulario
+                if (estudianteInfo) {                    
+                   
                 } else {
                     // Limpiar los campos si el estudiante no existe
-                    $('#apellidos_estudiante, #nombres_estudiante, #otro_campo_estudiante').val('');
-
-                    // Quitar la propiedad 'disabled'
-                    $('#apellidos_estudiante').prop('disabled', false);
-                    $('#nombres_estudiante').prop('disabled', false);
-                    // Quitar el resto de campos según la estructura de tu formulario
-
-                    // Mostrar un mensaje o manejar según tus necesidades
+                    $('#apellidos_estudiante, #nombres_estudiante, #fecha_estudiante, #lugar_nacimiento, #estado_estudiante, #estado_estudiante, #nacionalidad_estudiante, procedencia_estudiante, #estado_hermano, #cantidad_hermano, #sexo_hermano, #lugar_hermano').val('');
+                    
                 }
             },
             error: function (xhr, status, error) {
@@ -245,10 +235,10 @@ $(document).ready(function () {
                         $('#cantidad_hermano').val(estudianteInfo.cantidadHermano);
                         $('#sexo_hermano').val(estudianteInfo.sexoHermano);
                         $('#lugar_hermano').val(estudianteInfo.lugarHermano);
-                        // Deshabilitar los campos
-                        $('#apellidos_estudiante, #nombres_estudiante, #fecha_estudiante, #lugar_nacimiento, #estado_estudiante, #nacionalidad_estudiante, #procedencia_estudiante, #estado_hermano, #cantidad_hermano, #sexo_hermano, #lugar_hermano').prop('disabled', true);
-                        $('#redirigirBtn').show();
-                        $('#originalBtn').hide();
+                        
+                        $('#apellidos_estudiante, #nombres_estudiante, #fecha_estudiante, #edadestudiante, #lugar_nacimiento, #estado_estudiante, #nacionalidad_estudiante, #procedencia_estudiante, #estado_hermano, #cantidad_hermano, #sexo_hermano, #lugar_hermano').prop('enabled', true);
+                        // $('#redirigirBtn').show();
+                        // $('#originalBtn').hide();
                     }
                     else{
                         if(estudianteInfo.estado_estudiante == '2'){
@@ -269,8 +259,8 @@ $(document).ready(function () {
                     
                     // Quitar la propiedad 'disabled'
                     $('#apellidos_estudiante, #nombres_estudiante, #fecha_estudiante, #lugar_nacimiento, #estado_estudiante, #nacionalidad_estudiante, #procedencia_estudiante, #estado_hermano, #cantidad_hermano, #sexo_hermano, #lugar_hermano').prop('disabled', false);
-                    $('#redirigirBtn').hide();
-                    $('#originalBtn').show();
+                    // $('#redirigirBtn').hide();
+                    // $('#originalBtn').show();
                     // Mostrar un mensaje o manejar según tus necesidades
                 }
             },
@@ -280,8 +270,8 @@ $(document).ready(function () {
             }
         });
     });
-    $('#redirigirBtn').on('click', function () {
-        var cedulaEscolar = $('#cedula_escolar').val();
-        window.location.href = "inscripcion.php?cedulaEstudiante=" + cedulaEscolar;
-    });
+    // $('#redirigirBtn').on('click', function () {
+    //     var cedulaEscolar = $('#cedula_escolar').val();
+    //     window.location.href = "inscripcion.php?cedulaEstudiante=" + cedulaEscolar;
+    // });
 });

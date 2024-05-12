@@ -1,58 +1,69 @@
 <?php
 
 include("../conexion.php");
-
+//borre de la tabla inscripción
 $codigo_niveles=$_POST['codigo_nivelseccion'];
 $sql="DELETE FROM `inscripcion` WHERE codigo_nivelseccion=$codigo_niveles";
 $query=mysqli_query($conexion,$sql);
 
+//obteniendo el valor de la sección a eliminar
 $sql="SELECT `codigo_nivelseccion`, `codigo_niveles`, `codigo_seccion`, `estado` FROM `nivel_seccion` WHERE `codigo_nivelseccion`='$codigo_niveles'";
 $query=mysqli_query($conexion,$sql);
-if(mysqli_num_rows($query)>0)
+$fila=mysqli_fetch_assoc($query);
+$codigo_seccion=$fila['codigo_seccion'];
+
+$sentencia = ("SELECT a.*, b.estado AS nom, c.*, d.* 
+FROM niveles a
+JOIN nivel_seccion d ON a.codigo_niveles = d.codigo_niveles
+JOIN estado b ON d.estado = b.codigo_estado
+JOIN secciones c ON c.codigo_seccion = d.codigo_seccion
+ORDER BY d.estado ASC, c.nombre ASC, a.descripcion ASC");
+$mostrar = mysqli_query($conexion, $sentencia);
+
+//creando vectores
+$resultados = array();
+$secciones = array(); 
+if($codigo_seccion>1)
 {
-    $fila1 = mysqli_fetch_assoc($query);
-    $permiso=$fila1['codigo_seccion'];
-    if($permiso>1)
+    //guardando las secciones mayores a la que se va a eliminar
+    while($fila1 = mysqli_fetch_assoc($mostrar))
+    {      
+    if($fila1['codigo_seccion']>$codigo_seccion)
     {
-            $sql="DELETE FROM `nivel_seccion` WHERE codigo_nivelseccion ='$codigo_niveles'";
-            $query=mysqli_query($conexion,$sql);
+        $resultados[] = $fila1['codigo_nivelseccion']; 
+        $secciones[] =  $fila1['codigo_seccion'];   
+    }          
+            
+    }  
 
-            $sql="SELECT `codigo_nivelseccion`, `codigo_niveles`, `codigo_seccion`, `estado` FROM `nivel_seccion` WHERE `codigo_nivelseccion`>'$codigo_niveles'";
-            $query=mysqli_query($conexion,$sql);
-            $resultados = array();
-            $secciones = array(); 
+    $sql1="DELETE FROM `nivel_seccion` WHERE codigo_nivelseccion ='$codigo_niveles'";
+    $query1=mysqli_query($conexion,$sql1);
 
-            if(mysqli_num_rows($query)>0)
-            {
-                while($fila1 = mysqli_fetch_assoc($query))
-                {                
-                $resultados[] = $fila1['codigo_nivelseccion']; 
-                $secciones[] =  $fila1['codigo_seccion'];            
-                }  
-                foreach($resultados AS $resultado)
-                {
-                    $consulta = "SELECT * FROM nivel_seccion WHERE codigo_nivelseccion = '$resultado'";
-                    $busqueda2=mysqli_query($conexion, $consulta);
+    foreach($resultados AS $resultado)
+    {
+    $consulta = "SELECT * FROM nivel_seccion WHERE codigo_nivelseccion = '$resultado'";
+    $busqueda2=mysqli_query($conexion, $consulta);
 
-                    $fila2 = mysqli_fetch_assoc($busqueda2);
-                    if($fila2["codigo_seccion"]>2 )
-                    {
-                        $seccion=$fila2["codigo_seccion"]-1;            
-                        
-                            $actualizar = "UPDATE `nivel_seccion` SET codigo_seccion = '$seccion' WHERE codigo_nivelseccion = '$resultado'"; 
-                            mysqli_query($conexion, $actualizar);   
-                        
-                    }                            
-                }          
-            }    
-
+    $fila2 = mysqli_fetch_assoc($busqueda2);
+    if($fila2["codigo_seccion"]>2 )
+    {
+    $seccion=$fila2["codigo_seccion"]-1;            
+                            
+    $actualizar = "UPDATE `nivel_seccion` SET codigo_seccion = '$seccion' WHERE codigo_nivelseccion = '$resultado'"; 
+    mysqli_query($conexion, $actualizar);                           
     }
-    else
-    {
-        $sql="DELETE FROM `nivel_seccion` WHERE codigo_nivelseccion ='$codigo_niveles'";
-        $query=mysqli_query($conexion,$sql);
+    
+    
     }    
+
+}  
+else
+{
+    $sql="DELETE FROM `nivel_seccion` WHERE codigo_nivelseccion ='$codigo_niveles'";
+    $query=mysqli_query($conexion,$sql);
 }
+
+
 if($query){
     Header("Location: ../../admin/niveles.php");
  }  

@@ -150,9 +150,10 @@ if (!isset($_SESSION['codigo_usuario'])) {
                   <!-- Estudiante -->
                   <div id="estudiante" class="form-section current-section">
                     <h2>DATOS ESTUDIANTE</h2><br>
-                    <form autocomplete="off" enctype="multipart/form-data">
+                    <form autocomplete="off" enctype="multipart/form-data" >
                       <label>Cédula Escolar: <input type="text" id="cedula_escolar" name="cedula_escolar" 
                       minlength="11" maxlength="11" pattern="\d{11}" title="Cédula escolar invalida, debe requerir 11 numeros." required></label>
+                      
 
                       <label>Apellidos: <input type="text" id="apellidos_estudiante" name="apellidos_estudiante"
                           pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ ]+" title="Solo letras y espacios permitidos."
@@ -242,14 +243,16 @@ if (!isset($_SESSION['codigo_usuario'])) {
                       </script>
                     </form>
                     <button id="originalBtn" class="btn"
-                      onclick="validateAndShowSection('antecedentes', 'estudiante')">Siguiente</button>
+                      onclick="validateAndShowSection('antecedentes', 'estudiante')" name="ok">Siguiente</button>                      
                     <button id="redirigirBtn" class="btn" style="display:none;">Ir a inscripción</button>
                   </div>
-
+                          
                   <!-- Antecedentes Prenatales -->
                   <div id="antecedentes" class="form-section">
-                    <h2>Antecedentes Paranetales</h2><br>
+                    <h2>Antecedentes Paranetales</h2><br>                   
                     <form>
+                     
+                        
                       <label>¿Qué enfermedad ha padecido?: <input type="text" id="enfermedad" name="enfermedad"
                           pattern="[A-Za-z0-9,.ñÑáéíóúüÁÉÍÓÚÜ ]+" title="Solo se permiten letras, números, comas y puntos"
                           maxlength="50" required></label>
@@ -306,6 +309,7 @@ if (!isset($_SESSION['codigo_usuario'])) {
                         </select>
                       </label>
                     </form>
+                    
                     <script>
                       const hospitalizadoInput = document.getElementById("hospitalizado");
                       const motivoHospitalizacionInput = document.getElementById("motivoHospitalizacion");
@@ -392,7 +396,7 @@ if (!isset($_SESSION['codigo_usuario'])) {
                   <div id="madre" class="form-section">
                     <h2>Datos de la Madre</h2><br>
                     <form enctype="multipart/form-data">
-                      <label>Cédula: <input type="text" id="cedula_mama" pattern="\d{7,9}" required
+                      <label>Cédula: <input type="text" id="cedula_mama" pattern="\d{7,9}" value="30163757" required
                           title="Cédula inválida (debe tener entre 7 y 9 dígitos)" name="cedula_mama"></label>
                       <label>Apellidos: <input type="text" id="apellidos_mama" pattern="^[A-Za-z0-9ñÑáéíóúüÁÉÍÓÚÜ ,.-]+"
                           required title="Solo letras y espacios permitidos" maxlength="25" minlength="5"
@@ -436,8 +440,12 @@ if (!isset($_SESSION['codigo_usuario'])) {
                           ?>
                         </select>
                       </label>
-                      <label>edad: <input type="number" id="fecha_mama" name="fecha_mama"
-                          max="<?php echo date('d-m-Y'); ?>"required></label>
+                      <label>Fecha de Nacimiento: <input type="date" id="fecha_mama" name="fecha_mama"
+                          max="<?php echo date('d-m-Y'); ?>" required></label>
+                        
+                        <label>Edad: <input type="text" id="edadmadre" name="edadmadre"                          
+                          minlength="3" maxlength="4" required readonly disabled></label>
+                      
                         
                       <label>Teléfono: <input type="text" id="telefono_mama" pattern="[0-9]{11}" required
                         title="Teléfono inválido, debe contener 11 dígitos numéricos"
@@ -529,8 +537,11 @@ if (!isset($_SESSION['codigo_usuario'])) {
                           ?>
                         </select>
                       </label>
-                      <label>Edad: <input type="number" id="fecha_papa" name="fecha_papa"
-                          max="<?php echo date('d-m-Y'); ?>"required></label>                      
+                      <label>Fecha de Nacimiento: <input type="date" id="fecha_papa" name="fecha_papa"
+                          max="<?php echo date('d-m-Y'); ?>" required></label>
+                        
+                        <label>Edad: <input type="text" id="edadmadre" name="edadpadre"                          
+                          minlength="3" maxlength="4" required readonly disabled></label>                                           
                       <label>Teléfono: <input type="text" id="telefono_papa" pattern="[0-9]{11}" required
                         title="Teléfono inválido, debe contener 11 dígitos numéricos"
                         name="telefono_papa"></label>
@@ -647,6 +658,24 @@ if (!isset($_SESSION['codigo_usuario'])) {
         document.getElementById('edadestudiante').value = '';
     }
 });
+document.getElementById('fecha_mama').addEventListener('change', function() {
+    var fechaNacimiento = this.value;
+    
+    if (fechaNacimiento !== '') {
+        var fechaNacimientoDate = new Date(fechaNacimiento);
+        var fechaActual = new Date();
+        var edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
+
+        // Ajustar la edad si aún no ha pasado el cumpleaños de este año
+        if (fechaActual.getMonth() < fechaNacimientoDate.getMonth() || (fechaActual.getMonth() === fechaNacimientoDate.getMonth() && fechaActual.getDate() < fechaNacimientoDate.getDate())) {
+            edad--;
+        }
+
+        document.getElementById('edadmadre').value = edad;
+    } else {
+        document.getElementById('edadmadre').value = '';
+    }
+});
 
 document.getElementById('fecha_papa').addEventListener('change', function() {
     var fechaNacimiento = this.value;
@@ -673,7 +702,7 @@ document.getElementById('fecha_papa').addEventListener('change', function() {
           var cedulaEstudiante = document.getElementById('cedula_escolar').value;
           var apellidosEstudiante = document.getElementById('apellidos_estudiante').value;
           var nombresEstudiante = document.getElementById('nombres_estudiante').value;
-          var fechaEstudiante = document.getElementById('fecha_estudiante').value;
+          var fechaEstudiante = document.getElementById('fecha_estudiante').value;          
           var lugarNacimiento = document.getElementById('lugar_nacimiento').value;
           var estadoEstudiante = document.getElementById('estado_estudiante').value;
           var nacionalidadEstudiante = document.getElementById('nacionalidad_estudiante').value;
@@ -866,7 +895,84 @@ document.getElementById('fecha_papa').addEventListener('change', function() {
               alert("Error en la solicitud AJAX");
             }
           });
-        }</script>
+        }
+        
+        
+        
+
+        document.getElementById("cedula_escolar").addEventListener("change", function() {
+    var cedulaEstudiante = this.value;
+
+    // Envía la cédula del estudiante al servidor usando AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "./buscarmama.php?cedula_escolar=" + cedulaEstudiante, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Completa el campo de cédula de la madre con la respuesta del servidor
+           
+            document.getElementById("cedula_mama").value = xhr.responseText;
+            
+        }
+    };
+    xhr.send();
+});
+
+
+document.getElementById("cedula_escolar").addEventListener("change", function() {
+    var cedulaEstudiante = this.value;
+
+    // Envía la cédula del estudiante al servidor usando AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "./buscarrepresentante.php?cedula_escolar=" + cedulaEstudiante, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Completa el campo de cédula de la madre con la respuesta del servidor
+           
+            document.getElementById("cedula_representante").value = xhr.responseText;
+            
+        }
+    };
+    xhr.send();
+});
+
+document.getElementById("cedula_escolar").addEventListener("change", function() {
+    var cedulaEstudiante = this.value;
+
+    // Envía la cédula del estudiante al servidor usando AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "./buscarpapa.php?cedula_escolar=" + cedulaEstudiante, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Completa el campo de cédula de la madre con la respuesta del servidor
+           
+            document.getElementById("cedula_papa").value = xhr.responseText;
+            
+        }
+    };
+    xhr.send();
+});
+
+document.getElementById("cedula_escolar").addEventListener("change", function() {
+    var cedulaEstudiante = this.value;
+
+    // Envía la cédula del estudiante al servidor usando AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "./buscaremergencia.php?cedula_escolar=" + cedulaEstudiante, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            // Completa el campo de cédula de la madre con la respuesta del servidor
+           
+            document.getElementById("nombre_caso").value = xhr.responseText;
+            
+        }
+    };
+    xhr.send();
+});
+
+
+        
+        
+        </script>
       <script src="validaciones/busqueda.js"></script>
       <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
       <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
