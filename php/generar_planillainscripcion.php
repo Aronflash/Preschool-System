@@ -28,6 +28,22 @@
             $this->SetFont('Arial', '', 7);
         }
         function Header(){
+            $codigoInscripcion = isset($_GET['codigo_inscripcion']) ? $_GET['codigo_inscripcion'] : '';
+    // Verifica que el código de inscripción no esté vacío
+    if (empty($codigoInscripcion)) {
+        die("Error: Código de inscripción no válido.");
+    }
+            require 'conexion.php';
+            $sentenciaa = ("SELECT pa.nombre AS nombre_periodo
+            FROM inscripcion i
+            JOIN periodo_academico pa ON i.codigo_periodo = pa.codigo_periodo
+            WHERE i.codigo_inscripcion = '$codigoInscripcion';");
+            $mostrarrr = mysqli_query($conexion, $sentenciaa);
+            $r = mysqli_fetch_assoc($mostrarrr);
+            $periodo=$r['nombre_periodo'];
+            
+
+
             $imagen1 = "./ministerio1.png";
             $imagen2 = "./oficial.png";
             $imagen3 = "./logoprees.png";
@@ -47,7 +63,8 @@
             $this->Cell(0, 4, utf8_decode("FICHA DE INSCRIPCIÓN"), 0, 1, 'C');
             $this->SetFontSize(15);
             $this->Ln(3);
-            $this->Cell(0, 4, utf8_decode("AÑO ESCOLAR 2023-2024"), 0, 1, 'C');
+            $this->Cell(0, 4, utf8_decode("AÑO ESCOLAR ".$periodo), 0, 1, 'C');
+            
             
         }
 
@@ -119,6 +136,18 @@
             $profesionM = $datos['profesion_m'];
             $datosExtraM = $datos['datos_extra_m'];
 
+            $CM=$datos['cedula_m'];
+            $sql2="SELECT * FROM mama WHERE cedula_mama='$CM'";
+            $aron= $conn->query($sql2);
+            $row=mysqli_fetch_assoc($aron);            
+            $fecha_nacimiento=$row['fecha_nacimiento'];
+            $fecha_nacimiento_dt = new DateTime($fecha_nacimiento);
+            $fecha_actual_dt = new DateTime();
+            // Calcular la diferencia entre las fechas
+            $edad = $fecha_actual_dt->diff($fecha_nacimiento_dt);
+            // Obtener la edad en años
+            $edad_añosM = $edad->y;
+
             // datos papa
 
             $apellidosP = $datos['apellidos_pp'];
@@ -135,7 +164,20 @@
             $result = $conn->query($sql);
             $row = $result->fetch_assoc();
             $nacionalidadP = $row['descripcion'];
-            $edadP = $datos['edad_pp'];
+            
+
+            $CP=$datos['cedula_pp'];
+            $sql2="SELECT * FROM papa WHERE cedula_papa='$CP'";
+            $aron= $conn->query($sql2);
+            $row=mysqli_fetch_assoc($aron);            
+            $fecha_nacimiento=$row['fecha_nacimiento'];
+            $fecha_nacimiento_dt = new DateTime($fecha_nacimiento);
+            $fecha_actual_dt = new DateTime();
+            // Calcular la diferencia entre las fechas
+            $edad = $fecha_actual_dt->diff($fecha_nacimiento_dt);
+            // Obtener la edad en años
+            $edadP = $edad->y;
+
             $correoP = $datos['correo_pp'];
             $telefonoPT = $datos['tt_pp'];
             $direccionPT =$datos['dt_pp'];
@@ -175,7 +217,7 @@
             $this->resultado($fnaN);
             $this->Line(154, $this->GetY()+4, 166, $this->GetY()+4);
             $this->Ln($interlineado);
-            $this->Write(5, "Edad: ");
+            $this->Write(5, "Edad:  ");
             $this->resultado($edadN);
             $this->Line(18, $this->GetY()+4, 22, $this->GetY()+4);
             $this->chart(68, 103);
@@ -389,8 +431,8 @@
             $this->resultado($nacionalidadM);
             $this->Line(67, $this->GetY()+4, 86, $this->GetY()+4);
             $this->SetX(87);
-            $this->Write(5, "Edad: ");
-            $this->resultado($edadM);
+            $this->Write(5, "Edad:  ");
+            $this->resultado($edad_añosM);
             $this->Line(95, $this->GetY()+4, 100, $this->GetY()+4);
             $this->SetX(100);
             $this->Write(5, "Correo: ");
@@ -463,7 +505,7 @@
             $this->resultado($nacionalidadP);
             $this->Line(67, $this->GetY()+4, 86, $this->GetY()+4);
             $this->SetX(87);
-            $this->Write(5, "Edad: ");
+            $this->Write(5, "Edad:  ");
             $this->resultado($edadP);
             $this->Line(95, $this->GetY()+4, 100, $this->GetY()+4);
             $this->SetX(100);
@@ -547,6 +589,10 @@
             $this->SetY(-10);
             $this->SetX(-45);
             $this->Cell(0, 5, utf8_decode("Dia: ".$dia. " Mes: ". $mes. " Año: ". $anio));
+
+            
+            
+
         }
     }
     require 'conexion.php';

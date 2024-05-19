@@ -197,7 +197,20 @@ $(document).ready(function () {
             data: { cedulaEscolar: cedulaEscolar },
             dataType: 'json',
             success: function (estudianteInfo) {
-                if (estudianteInfo) {                    
+                if (estudianteInfo) {     
+                        $('#apellidos_estudiante').val(estudianteInfo.apellidos);
+                        $('#nombres_estudiante').val(estudianteInfo.nombres);
+                        $('#fecha_estudiante').val(estudianteInfo.fechaNacimiento);
+                        $('#lugar_nacimiento').val(estudianteInfo.lugarNacimiento);
+                        $('#estado_estudiante').val(estudianteInfo.estado);
+                        $('#nacionalidad_estudiante').val(estudianteInfo.nacionalidad);
+                        $('#procedencia_estudiante').val(estudianteInfo.procedencia);
+                        $('#estado_hermano').val(estudianteInfo.estadoHermano);
+                        $('#cantidad_hermano').val(estudianteInfo.cantidadHermano);
+                        $('#sexo_hermano').val(estudianteInfo.sexoHermano);
+                        $('#lugar_hermano').val(estudianteInfo.lugarHermano);
+                        
+                        $('#apellidos_estudiante, #nombres_estudiante, #fecha_estudiante, #edadestudiante, #lugar_nacimiento, #estado_estudiante, #nacionalidad_estudiante, #procedencia_estudiante, #estado_hermano, #cantidad_hermano, #sexo_hermano, #lugar_hermano').prop('enabled', true);               
                    
                 } else {
                     // Limpiar los campos si el estudiante no existe

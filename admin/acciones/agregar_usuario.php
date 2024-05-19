@@ -62,14 +62,14 @@ if (!isset($_SESSION['codigo_usuario'])) {
                                     <form class="form-horizontal" action="../../php/registrousuario.php" method="POST" enctype="multipart/form-data" id="formulario">
                                         <div class="card-body">
                                             <h4 class="card-title">Usuarios</h4>
-                                            <div class="form-group row formulario__grupo" id="grupo__codigo_usuario">
+                                            <!-- <div class="form-group row formulario__grupo" id="grupo__codigo_usuario">
                                                 <label for="codigo_usuario" class="col-sm-3 text-right control-label col-form-label formulario__label">Codigo del Usuario:</label>
                                                 <div class="col-sm-9 formulario__grupo-input">
                                                     <input type="text" class="form-control" id="codigo_usuario" name="codigo_usuario" placeholder="" required>
                                                     <i class="formulario__validacion-estado fas fa-times-circle"></i>
                                                 </div>
                                                 <p class="formulario__input-error ">El codigo debe ser de 1 a 5 campos numericos.</p>
-                                            </div>
+                                            </div> -->
                                             <div class="form-group row formulario__grupo" id="grupo__nombre_usuario">
                                                 <label for="nombre_usuario" class="col-sm-3 text-right control-label col-form-label formulario__label">Nombre:</label>
                                                 <div class="col-sm-9 formulario__grupo-input">
