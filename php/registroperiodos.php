@@ -14,13 +14,10 @@ $verificando_codigo_periodo = $conexion->query($sql);
 
 if (mysqli_num_rows($verificando_codigo_periodo) > 0) {
 
-    echo '
-   <script>
+    echo '<script>
         alert("Esta codigo ya esta registrado, intenta con uno nuevo");           
         window.location = "../admin/acciones/agregar_periodos.php";
-        </script>
-
-';
+        </script>';
     exit();
 }
 
@@ -36,7 +33,28 @@ if ($queri) {
     (4, 'C', '$codigo_periodo'),
     (5, 'D', '$codigo_periodo'),
     (6, 'E', '$codigo_periodo'),
-    (7, 'F', '$codigo_periodo');";
+    (7, 'F', '$codigo_periodo'),
+    (8, 'G', '$codigo_periodo'),
+    (9, 'H', '$codigo_periodo'),
+    (10, 'I', '$codigo_periodo'),
+    (11, 'J', '$codigo_periodo'),
+    (12, 'K', '$codigo_periodo'),
+    (13, 'L', '$codigo_periodo'),
+    (14, 'M', '$codigo_periodo'),
+    (15, 'N', '$codigo_periodo'),
+    (16, 'Ñ', '$codigo_periodo'),
+    (17, 'O', '$codigo_periodo'),
+    (18, 'P', '$codigo_periodo')
+    (19, 'Q', '$codigo_periodo'),
+    (20, 'R', '$codigo_periodo'),
+    (21, 'S', '$codigo_periodo'),
+    (22, 'T', '$codigo_periodo'),
+    (23, 'U', '$codigo_periodo'),
+    (24, 'V', '$codigo_periodo'),
+    (25, 'W', '$codigo_periodo'),
+    (26, 'X', '$codigo_periodo'),
+    (27, 'Y', '$codigo_periodo'),
+    (28, 'Z', '$codigo_periodo');";
     $conexion->query($sql);
     $sql = "SELECT * FROM historico_nivel_seccion";
     $result = $conexion->query($sql);

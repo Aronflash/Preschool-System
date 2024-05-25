@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-04-2024 a las 16:57:20
+-- Tiempo de generación: 25-05-2024 a las 22:08:32
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -259,9 +259,9 @@ CREATE TABLE `historico_inscripcion` (
 --
 
 INSERT INTO `historico_inscripcion` (`codigo_inscripcion`, `cedula_escolar`, `codigo_nivelseccion`, `codigo_periodo`, `fecha`) VALUES
-('12121212121-7-78', '12121212121', 78, 7, '2024-04-20'),
-('30609563120-7-78', '30609563120', 78, 7, '2024-04-20'),
-('30609563122-7-78', '30609563122', 78, 7, '2024-04-19');
+('12121212036', '12121212121', 78, 7, '2024-04-20'),
+('30609563035', '30609563120', 78, 7, '2024-04-20'),
+('30609563037', '30609563122', 78, 7, '2024-04-19');
 
 -- --------------------------------------------------------
 
@@ -319,29 +319,21 @@ CREATE TABLE `historico_nivel_seccion` (
 --
 
 INSERT INTO `historico_nivel_seccion` (`codigo_nivelseccion`, `codigo_niveles`, `codigo_seccion`, `estado`, `periodo`) VALUES
-(71, 1, 1, 1, 6),
-(72, 2, 2, 1, 6),
-(73, 2, 3, 1, 6),
-(74, 3, 4, 1, 6),
-(75, 3, 5, 1, 6),
-(76, 4, 6, 1, 6),
-(77, 4, 7, 1, 6),
 (78, 1, 1, 1, 7),
 (79, 2, 2, 1, 7),
 (80, 2, 3, 1, 7),
-(81, 3, 5, 1, 7),
-(82, 3, 6, 1, 7),
-(83, 4, 7, 1, 7),
-(84, 4, 8, 1, 7),
-(85, 1, 1, 1, 8),
-(86, 2, 2, 1, 8),
-(87, 2, 3, 1, 8),
-(88, 3, 5, 1, 8),
-(89, 3, 6, 1, 8),
-(90, 4, 7, 1, 8),
-(91, 4, 8, 1, 8),
+(81, 3, 4, 1, 7),
+(82, 3, 5, 1, 7),
+(83, 4, 6, 1, 7),
+(84, 4, 7, 1, 7),
 (92, 2, 4, 1, 7),
-(93, 2, 4, 1, 8);
+(94, 1, 1, 1, 7),
+(95, 2, 2, 1, 7),
+(96, 2, 3, 1, 7),
+(97, 3, 4, 1, 7),
+(98, 3, 5, 1, 7),
+(99, 4, 6, 1, 7),
+(100, 4, 7, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -422,27 +414,13 @@ CREATE TABLE `historico_secciones` (
 --
 
 INSERT INTO `historico_secciones` (`codigo_seccion`, `nombre`, `periodo`) VALUES
-(1, 'UNICA', 6),
 (1, 'UNICA', 7),
-(1, 'UNICA', 8),
-(2, 'A', 6),
 (2, 'A', 7),
-(2, 'A', 8),
-(3, 'B', 6),
 (3, 'B', 7),
-(3, 'B', 8),
-(4, 'C', 6),
 (4, 'C', 7),
-(4, 'C', 8),
-(5, 'D', 6),
 (5, 'D', 7),
-(5, 'D', 8),
-(6, 'E', 6),
 (6, 'E', 7),
-(6, 'E', 8),
-(7, 'F', 6),
 (7, 'F', 7),
-(7, 'F', 8),
 (8, 'G', 7),
 (9, 'H', 7),
 (10, 'I', 7),
@@ -484,9 +462,9 @@ CREATE TABLE `inscripcion` (
 --
 
 INSERT INTO `inscripcion` (`codigo_inscripcion`, `cedula_escolar`, `codigo_nivelseccion`, `codigo_periodo`, `fecha`) VALUES
-('12121212121-7-78', '12121212121', 78, 7, '2024-04-20'),
-('30609563120-7-78', '30609563120', 78, 7, '2024-04-20'),
-('30609563122-7-78', '30609563122', 78, 7, '2024-04-19');
+('12121212036', '12121212121', 78, 7, '2024-04-20'),
+('30609563035', '30609563120', 78, 7, '2024-04-20'),
+('30609563037', '30609563122', 78, 7, '2024-04-19');
 
 -- --------------------------------------------------------
 
@@ -613,7 +591,15 @@ INSERT INTO `nivel_seccion` (`codigo_nivelseccion`, `codigo_niveles`, `codigo_se
 (81, 3, 4, 1),
 (82, 3, 5, 1),
 (83, 4, 6, 1),
-(84, 4, 7, 1);
+(84, 4, 7, 1),
+(92, 2, 4, 1),
+(94, 1, 1, 1),
+(95, 2, 2, 1),
+(96, 2, 3, 1),
+(97, 3, 4, 1),
+(98, 3, 5, 1),
+(99, 4, 6, 1),
+(100, 4, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -692,8 +678,7 @@ CREATE TABLE `periodo_academico` (
 --
 
 INSERT INTO `periodo_academico` (`codigo_periodo`, `nombre`, `fecha_inicio`, `fecha_fin`, `actual`) VALUES
-(7, '2023-2024', '2023-09-09', '2024-07-07', 1),
-(8, '2025-2026', '2025-05-01', '2026-05-01', 0);
+(7, '2023-2024', '2023-09-09', '2024-07-07', 1);
 
 -- --------------------------------------------------------
 
@@ -1148,25 +1133,31 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `historico_nivel_seccion`
 --
 ALTER TABLE `historico_nivel_seccion`
-  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT de la tabla `nivel_seccion`
 --
 ALTER TABLE `nivel_seccion`
-  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT de la tabla `periodo_academico`
 --
 ALTER TABLE `periodo_academico`
-  MODIFY `codigo_periodo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `codigo_periodo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
 --
 ALTER TABLE `secciones`
   MODIFY `codigo_seccion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `codigo_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas
