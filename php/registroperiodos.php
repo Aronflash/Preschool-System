@@ -44,7 +44,7 @@ if ($queri) {
     (15, 'N', '$codigo_periodo'),
     (16, 'Ñ', '$codigo_periodo'),
     (17, 'O', '$codigo_periodo'),
-    (18, 'P', '$codigo_periodo')
+    (18, 'P', '$codigo_periodo'),
     (19, 'Q', '$codigo_periodo'),
     (20, 'R', '$codigo_periodo'),
     (21, 'S', '$codigo_periodo'),
