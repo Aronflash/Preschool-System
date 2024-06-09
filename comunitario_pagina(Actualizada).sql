@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2024 a las 16:21:58
+-- Tiempo de generación: 09-06-2024 a las 16:56:32
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -144,15 +144,6 @@ CREATE TABLE `historico_antecedentes` (
   `periodo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `historico_antecedentes`
---
-
-INSERT INTO `historico_antecedentes` (`codigo_antecedentes`, `enfermedad`, `hospitalizado`, `alergias`, `condicion`, `informe`, `limitacion`, `especialista`, `doctor`, `enfermar_facilidad`, `cedula_escolar`, `periodo`) VALUES
-(16, 'ninguna', '0', '0', '0', '0', 'null', '0', '', '0', '12121212121', 7),
-(15, 'Ninguna', '0', '0', '0', '0', 'null', '0', '', '0', '30609563120', 7),
-(14, 'Ninguna', '0', '0', '0', '0', 'null', '0', '', '0', '30609563122', 7);
-
 -- --------------------------------------------------------
 
 --
@@ -166,14 +157,6 @@ CREATE TABLE `historico_caso` (
   `parentesco` int(11) NOT NULL,
   `periodo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `historico_caso`
---
-
-INSERT INTO `historico_caso` (`codigo_emergencia`, `nombre`, `foto_emergencia`, `parentesco`, `periodo`) VALUES
-(25, 'Carlos', '', 4, 7),
-(26, 'dasdasf', '', 1, 7);
 
 -- --------------------------------------------------------
 
@@ -205,15 +188,6 @@ CREATE TABLE `historico_estudiante` (
   `edad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `historico_estudiante`
---
-
-INSERT INTO `historico_estudiante` (`cedula_escolar`, `Nacionalidad`, `nombres`, `apellidos`, `fecha_nacimiento`, `lugar_nacimiento`, `estado`, `codigo_nacionalidad`, `estado_hermano`, `cantidad_hermano`, `sexo_hermano`, `lugar_hermano`, `cedula_representante`, `cedula_papa`, `cedula_mama`, `caso_emergencia`, `foto_estudiante`, `procedencia`, `estado_estudiante`, `periodo`, `edad`) VALUES
-('12121212121', '1', 'aaaaaaaaa', 'aaaaaaaa', '2003-10-26', 'kdjsakdasd', 'dkjashdashf', 1, 'No', 0, '', ' ', '30163757', '1589042', '30163757', 26, '', '0', 1, 7, 20),
-('30609563120', '1', 'Holaaaaaa', 'Holaaaa', '2003-10-26', 'holaaaaaaa', 'holaaaaaaaa', 1, 'No', 0, '', ' ', '11111111', '1589042', '12234234', 25, '', '0', 1, 7, 20),
-('30609563122', '1', 'Luis Aron', 'Rojas Porras', '2022-10-26', 'Merida', 'Táchira', 1, 'No', 0, 'No', ' ', '30163757', '1589042', '30163757', 25, '', '0', 1, 7, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -227,15 +201,6 @@ CREATE TABLE `historico_inscripcion` (
   `codigo_periodo` int(3) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `historico_inscripcion`
---
-
-INSERT INTO `historico_inscripcion` (`codigo_inscripcion`, `cedula_escolar`, `codigo_nivelseccion`, `codigo_periodo`, `fecha`) VALUES
-('12121212036', '12121212121', 78, 7, '2024-04-20'),
-('30609563035', '30609563120', 78, 7, '2024-04-20'),
-('30609563037', '30609563122', 78, 7, '2024-04-19');
 
 -- --------------------------------------------------------
 
@@ -266,14 +231,6 @@ CREATE TABLE `historico_mama` (
   `edad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `historico_mama`
---
-
-INSERT INTO `historico_mama` (`cedula_mama`, `nombres`, `apellidos`, `codigo_estadocivil`, `codigo_nacionalidad`, `fecha_nacimiento`, `direccion_habitacion`, `telefono_habitacion`, `direccion_trabajo`, `telefono_trabajo`, `codigo_nivelacademico`, `ocupacion`, `profesion`, `correo`, `datos_extras`, `foto_mama`, `codigo_estado`, `telefono`, `periodo`, `edad`) VALUES
-('12234234', 'Aaaaaaaaaaaaaa', 'Veeeeeee', 1, 1, '2003-10-26', 'hdosadashfas', '02763962231', 'jsabfjsaf', '04247156694', 1, 'Docente', 'Docente', 'docente@gmail.com', 'dsafasfas', '', 1, '04247146694', 7, 20),
-('30163757', 'Yulia Valentina', 'Ramón Lopez', 3, 1, '2000-10-08', 'ferrero tamyo', '02763962231', 'unefa', '04247156694', 4, 'Docente', 'Docente', 'docente@gmail.com', 'dsafasfas', '', 2, '04247146694', 7, 23);
-
 -- --------------------------------------------------------
 
 --
@@ -293,35 +250,27 @@ CREATE TABLE `historico_nivel_seccion` (
 --
 
 INSERT INTO `historico_nivel_seccion` (`codigo_nivelseccion`, `codigo_niveles`, `codigo_seccion`, `estado`, `periodo`) VALUES
-(78, 1, 1, 1, 7),
-(79, 2, 2, 1, 7),
-(80, 2, 3, 1, 7),
-(81, 3, 4, 1, 7),
-(82, 3, 5, 1, 7),
-(83, 4, 6, 1, 7),
-(84, 4, 7, 1, 7),
-(92, 2, 4, 1, 7),
-(94, 1, 1, 1, 7),
-(95, 2, 2, 1, 7),
-(96, 2, 3, 1, 7),
-(97, 3, 4, 1, 7),
-(98, 3, 5, 1, 7),
-(99, 4, 6, 1, 7),
-(100, 4, 7, 1, 7),
-(101, 1, 1, 1, 11),
-(102, 2, 2, 1, 11),
-(103, 2, 3, 1, 11),
-(104, 3, 4, 1, 11),
-(105, 3, 5, 1, 11),
-(106, 4, 6, 1, 11),
-(107, 4, 7, 1, 11),
-(108, 1, 1, 1, 12),
-(109, 2, 2, 1, 12),
-(110, 2, 3, 1, 12),
-(111, 3, 4, 1, 12),
-(112, 3, 5, 1, 12),
-(113, 4, 6, 1, 12),
-(114, 4, 7, 1, 12);
+(115, 1, 1, 1, 13),
+(116, 2, 2, 1, 13),
+(117, 2, 3, 1, 13),
+(118, 3, 4, 1, 13),
+(119, 3, 5, 1, 13),
+(120, 4, 6, 1, 13),
+(121, 4, 7, 1, 13),
+(122, 1, 1, 1, 14),
+(123, 2, 2, 1, 14),
+(124, 2, 3, 1, 14),
+(125, 3, 4, 1, 14),
+(126, 3, 5, 1, 14),
+(127, 4, 6, 1, 14),
+(128, 4, 7, 1, 14),
+(129, 1, 1, 1, 15),
+(130, 2, 2, 1, 15),
+(131, 2, 3, 1, 15),
+(132, 3, 4, 1, 15),
+(133, 3, 5, 1, 15),
+(134, 4, 6, 1, 15),
+(135, 4, 7, 1, 15);
 
 -- --------------------------------------------------------
 
@@ -352,13 +301,6 @@ CREATE TABLE `historico_papa` (
   `edad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `historico_papa`
---
-
-INSERT INTO `historico_papa` (`cedula_papa`, `nombres`, `apellidos`, `codigo_estadocivil`, `codigo_nacionalidad`, `fecha_nacimiento`, `direccion_habitacion`, `telefono_habitacion`, `direccion_trabajo`, `telefono_trabajo`, `codigo_nivelacademico`, `ocupacion`, `profesion`, `correo`, `datos_extras`, `foto_papa`, `codigo_estado`, `telefono`, `periodo`, `edad`) VALUES
-(1589042, 'Luis Aron', 'Rojas Porras', 3, 1, '2003-10-26', 'dsadas', '02765442342', 'unefa', '04122324312', 5, 'yo', 'yo', 'yo@gmail.com', 'dsada', '', 1, '04247146694', 7, 20);
-
 -- --------------------------------------------------------
 
 --
@@ -377,14 +319,6 @@ CREATE TABLE `historico_representante` (
   `periodo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `historico_representante`
---
-
-INSERT INTO `historico_representante` (`cedula_representante`, `nombres`, `apellidos`, `telefono`, `codigo_parentesco`, `foto_representante`, `codigo_estado`, `nacionalidad`, `periodo`) VALUES
-('11111111', 'aaaaaaaaaa', 'aaaaaaaaaaaa', '04247146694', 1, '', 1, 1, 7),
-('30163757', 'Yulia Valentina', 'Ramón Lopez', '04247146694', 2, '', 1, 1, 7);
-
 -- --------------------------------------------------------
 
 --
@@ -402,90 +336,90 @@ CREATE TABLE `historico_secciones` (
 --
 
 INSERT INTO `historico_secciones` (`codigo_seccion`, `nombre`, `periodo`) VALUES
-(1, 'UNICA', 7),
-(1, 'UNICA', 11),
-(1, 'UNICA', 12),
-(2, 'A', 7),
-(2, 'A', 11),
-(2, 'A', 12),
-(3, 'B', 7),
-(3, 'B', 11),
-(3, 'B', 12),
-(4, 'C', 7),
-(4, 'C', 11),
-(4, 'C', 12),
-(5, 'D', 7),
-(5, 'D', 11),
-(5, 'D', 12),
-(6, 'E', 7),
-(6, 'E', 11),
-(6, 'E', 12),
-(7, 'F', 7),
-(7, 'F', 11),
-(7, 'F', 12),
-(8, 'G', 7),
-(8, 'G', 11),
-(8, 'G', 12),
-(9, 'H', 7),
-(9, 'H', 11),
-(9, 'H', 12),
-(10, 'I', 7),
-(10, 'I', 11),
-(10, 'I', 12),
-(11, 'J', 7),
-(11, 'J', 11),
-(11, 'J', 12),
-(12, 'K', 7),
-(12, 'K', 11),
-(12, 'K', 12),
-(13, 'L', 7),
-(13, 'L', 11),
-(13, 'L', 12),
-(14, 'M', 7),
-(14, 'M', 11),
-(14, 'M', 12),
-(15, 'N', 7),
-(15, 'N', 11),
-(15, 'N', 12),
-(16, 'Ñ', 7),
-(16, 'Ñ', 11),
-(16, 'Ñ', 12),
-(17, 'O', 7),
-(17, 'O', 11),
-(17, 'O', 12),
-(18, 'P', 7),
-(18, 'P', 11),
-(18, 'P', 12),
-(19, 'Q', 7),
-(19, 'Q', 11),
-(19, 'Q', 12),
-(20, 'R', 7),
-(20, 'R', 11),
-(20, 'R', 12),
-(21, 'S', 7),
-(21, 'S', 11),
-(21, 'S', 12),
-(22, 'T', 7),
-(22, 'T', 11),
-(22, 'T', 12),
-(23, 'U', 7),
-(23, 'U', 11),
-(23, 'U', 12),
-(24, 'V', 7),
-(24, 'V', 11),
-(24, 'V', 12),
-(25, 'W', 7),
-(25, 'W', 11),
-(25, 'W', 12),
-(26, 'X', 7),
-(26, 'X', 11),
-(26, 'X', 12),
-(27, 'Y', 7),
-(27, 'Y', 11),
-(27, 'Y', 12),
-(28, 'Z', 7),
-(28, 'Z', 11),
-(28, 'Z', 12);
+(1, 'UNICA', 13),
+(1, 'UNICA', 14),
+(1, 'UNICA', 15),
+(2, 'A', 13),
+(2, 'A', 14),
+(2, 'A', 15),
+(3, 'B', 13),
+(3, 'B', 14),
+(3, 'B', 15),
+(4, 'C', 13),
+(4, 'C', 14),
+(4, 'C', 15),
+(5, 'D', 13),
+(5, 'D', 14),
+(5, 'D', 15),
+(6, 'E', 13),
+(6, 'E', 14),
+(6, 'E', 15),
+(7, 'F', 13),
+(7, 'F', 14),
+(7, 'F', 15),
+(8, 'G', 13),
+(8, 'G', 14),
+(8, 'G', 15),
+(9, 'H', 13),
+(9, 'H', 14),
+(9, 'H', 15),
+(10, 'I', 13),
+(10, 'I', 14),
+(10, 'I', 15),
+(11, 'J', 13),
+(11, 'J', 14),
+(11, 'J', 15),
+(12, 'K', 13),
+(12, 'K', 14),
+(12, 'K', 15),
+(13, 'L', 13),
+(13, 'L', 14),
+(13, 'L', 15),
+(14, 'M', 13),
+(14, 'M', 14),
+(14, 'M', 15),
+(15, 'N', 13),
+(15, 'N', 14),
+(15, 'N', 15),
+(16, 'Ñ', 13),
+(16, 'Ñ', 14),
+(16, 'Ñ', 15),
+(17, 'O', 13),
+(17, 'O', 14),
+(17, 'O', 15),
+(18, 'P', 13),
+(18, 'P', 14),
+(18, 'P', 15),
+(19, 'Q', 13),
+(19, 'Q', 14),
+(19, 'Q', 15),
+(20, 'R', 13),
+(20, 'R', 14),
+(20, 'R', 15),
+(21, 'S', 13),
+(21, 'S', 14),
+(21, 'S', 15),
+(22, 'T', 13),
+(22, 'T', 14),
+(22, 'T', 15),
+(23, 'U', 13),
+(23, 'U', 14),
+(23, 'U', 15),
+(24, 'V', 13),
+(24, 'V', 14),
+(24, 'V', 15),
+(25, 'W', 13),
+(25, 'W', 14),
+(25, 'W', 15),
+(26, 'X', 13),
+(26, 'X', 14),
+(26, 'X', 15),
+(27, 'Y', 13),
+(27, 'Y', 14),
+(27, 'Y', 15),
+(28, 'Z', 13),
+(28, 'Z', 14),
+(28, 'Z', 15);
 
 -- --------------------------------------------------------
 
@@ -612,13 +546,13 @@ CREATE TABLE `nivel_seccion` (
 --
 
 INSERT INTO `nivel_seccion` (`codigo_nivelseccion`, `codigo_niveles`, `codigo_seccion`, `estado`) VALUES
-(108, 1, 1, 1),
-(109, 2, 2, 1),
-(110, 2, 3, 1),
-(111, 3, 4, 1),
-(112, 3, 5, 1),
-(113, 4, 6, 1),
-(114, 4, 7, 1);
+(115, 1, 1, 1),
+(116, 2, 2, 1),
+(117, 2, 3, 1),
+(118, 3, 4, 1),
+(119, 3, 5, 1),
+(120, 4, 6, 1),
+(121, 4, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -690,9 +624,9 @@ CREATE TABLE `periodo_academico` (
 --
 
 INSERT INTO `periodo_academico` (`codigo_periodo`, `nombre`, `fecha_inicio`, `fecha_fin`, `actual`) VALUES
-(7, '2023-2024', '2023-09-09', '2024-07-07', 0),
-(11, '2025-2026', '2025-02-02', '2026-02-02', 0),
-(12, '2026-2027', '2026-02-02', '2027-02-02', 1);
+(13, '2024-2025', '2024-01-01', '2025-01-01', 1),
+(14, '2025-2026', '2025-01-01', '2026-01-01', 0),
+(15, '2026-2027', '2026-01-01', '2027-01-01', 0);
 
 -- --------------------------------------------------------
 
@@ -1121,13 +1055,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `antecedentes_paranatales`
 --
 ALTER TABLE `antecedentes_paranatales`
-  MODIFY `codigo_antecedentes` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `codigo_antecedentes` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `caso_emergencia`
 --
 ALTER TABLE `caso_emergencia`
-  MODIFY `codigo_emergencia` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `codigo_emergencia` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -1139,19 +1073,19 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `historico_nivel_seccion`
 --
 ALTER TABLE `historico_nivel_seccion`
-  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT de la tabla `nivel_seccion`
 --
 ALTER TABLE `nivel_seccion`
-  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `codigo_nivelseccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT de la tabla `periodo_academico`
 --
 ALTER TABLE `periodo_academico`
-  MODIFY `codigo_periodo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `codigo_periodo` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `secciones`
