@@ -288,3 +288,40 @@ $(document).ready(function () {
     //     window.location.href = "inscripcion.php?cedulaEstudiante=" + cedulaEscolar;
     // });
 });
+
+$('#cedula_escolar').on('keyup', function () {
+    var cedulaEscolar = $(this).val();
+
+    // Realizar la petición AJAX para filtrar por cédula_escolar
+    $.ajax({
+        type: 'POST',
+        url: '../php/busquedaenfermedad.php', // Ajusta la URL al archivo correcto
+        data: { cedulaEscolar: cedulaEscolar },
+        dataType: 'json',
+        success: function (estudianteEnfe) {
+            if (estudianteEnfe) 
+                {     
+                    $('#enfermedad').val(estudianteEnfe.enfermedad);
+                    $('#motivoHospitalizacion').val(estudianteEnfe.hospitalizado);
+                    $('#alergias').val(estudianteEnfe.alergias);
+                    $('#condicion').val(estudianteEnfe.condicion);
+                    $('#limitacion').val(estudianteEnfe.limitacion);
+                    $('#doctor').val(estudianteEnfe.doctor);      
+                    $('#informe').val(estudianteEnfe.informe);    
+                    $('#especialista').val(estudianteEnfe.especialista);    
+                    $('#enfermedad, #motivoHospitalizacion, #hospitalizado, #alergias, #condicion, #limitacion, #doctor, #informe, #especialista' ).prop('enabled', true);               
+               
+            } else {
+                // Limpiar los campos si el estudiante no existe
+                $('#enfermedad, #motivoHospitalizacion, #hospitalizado, #alergias, #condicion, #limitacion, #doctor, #informe, #especialista').val('');
+                
+            }
+        },
+        error: function (xhr, status, error) {
+            // Manejar errores de la petición AJAX, si es necesario
+            console.error(xhr.responseText);
+        }
+    });
+});
+
+

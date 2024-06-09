@@ -969,6 +969,23 @@ document.getElementById("cedula_escolar").addEventListener("change", function() 
     xhr.send();
 });
 
+// document.getElementById("cedula_escolar").addEventListener("change", function() {
+//     var cedulaEstudiante = this.value;
+
+//     // Envía la cédula del estudiante al servidor usando AJAX
+//     var xhr = new XMLHttpRequest();
+//     xhr.open("GET", "./buscarparentesco.php?cedula_escolar=" + cedulaEstudiante, true);
+//     xhr.onreadystatechange = function() {
+//         if (xhr.readyState == 4 && xhr.status == 200) {
+//             // Completa el campo de cédula de la madre con la respuesta del servidor
+           
+//             document.getElementById("parentesco_emergencia").value = xhr.responseText;
+            
+//         }
+//     };
+//     xhr.send();
+// });
+
 
         
         

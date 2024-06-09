@@ -1,7 +1,7 @@
 <?php
     include("../php/conexion.php");
 
-    $cedulaEstudiante = $_GET["cedula_escolar"];
+    $cedulaEstudiante = '30609563120'; //$_GET["cedula_escolar"];
     $sql = "SELECT * FROM `estudiante` WHERE cedula_escolar = '$cedulaEstudiante'";
     $resultado = $conexion->query($sql);
 

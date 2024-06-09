@@ -30,6 +30,7 @@ if (isset($_POST['cedulaEscolar'])) {
         $estudianteInfo['sexoHermano'] = $row['sexo_hermano'];
         $estudianteInfo['lugarHermano'] = $row['lugar_hermano'];
         $estudianteInfo['estado_estudiante'] = $row['estado_estudiante'];
+        $cedulaMama=$row['cedula_mama'];
 
         // Convierte el array a formato JSON y lo devuelve
         echo json_encode($estudianteInfo);
@@ -54,6 +55,7 @@ if (isset($_POST['cedulaEscolar'])) {
                     $estudianteInfo['sexoHermano'] = $row['sexo_hermano'];
                     $estudianteInfo['lugarHermano'] = $row['lugar_hermano'];
                     $estudianteInfo['estado_estudiante'] = $row['estado_estudiante'];
+                    $cedulaMama=$row['cedula_mama'];
                     break;
                 }
             }
