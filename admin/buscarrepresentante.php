@@ -18,13 +18,14 @@ else
   require "../php/periodos_a_buscar.php";
   if($periodos != null){
     for($i = 0; $i < sizeof($periodos); $i++){
-        $sql = "SELECT * FROM historico_estudiante WHERE cedula_escolar = '$cedulaEstudiante' AND periodo = '$periodos[$i]';";
+        $sql = "SELECT * FROM historico_estudiante WHERE cedula_escolar = '$cedulaEstudiante' AND periodo = '{$periodos[$i]}';";
+        
         $result = $conexion->query($sql);
         if($result->num_rows > 0){
             $row = $result->fetch_assoc();
            $cedular= $row['cedula_representante'];
            echo $cedular;
-           
+           break;
         }
     }    
   }

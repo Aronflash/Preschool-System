@@ -25,6 +25,7 @@ else
            $cedulapapa= $row['cedula_papa'];
            echo $cedulapapa;
            
+          break;
         }
     }
     
